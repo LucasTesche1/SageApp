@@ -1,7 +1,9 @@
+import { IconSymbol } from "@/components/ui/IconSymbol";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
+import { router } from "expo-router";
 import React from "react";
-import { Image, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, Touchable, TouchableOpacity,ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 
 
@@ -31,7 +33,17 @@ export default function HomeScreen() {
       <ScrollView>
         {/* CARROSSEL DE ICONES */}
         <View style={styles.circleRow}>
-          <View style={styles.circle}/>
+        <TouchableOpacity
+          style={styles.circle}   
+          onPress={() => router.push('/medicine')}
+          
+        >
+        <Image
+          source={require('@/assets/images/icon-pill.png')}
+          style={styles.img}
+        />  
+
+        </TouchableOpacity>
           <View style={styles.circle}/>
           <View style={styles.circle}/>
           <View style={styles.circle}/>
@@ -113,6 +125,9 @@ const styles = StyleSheet.create({
 
     // sombra Android
     elevation: 6,
+
+    //alinhar ícones
+    alignItems : 'center'
   },
   
   productRow: {
@@ -139,4 +154,12 @@ const styles = StyleSheet.create({
     height: 370,
     resizeMode: "contain" ,
   },
+
+  img: { 
+       
+    top : 10,
+    width : 37,
+    height : 37,
+    resizeMode : 'contain',
+  }
 });

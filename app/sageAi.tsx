@@ -45,7 +45,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>               
        
       <View style={styles.header}>
-        <Text style={{textAlign : 'left' ,fontFamily: 'Michroma-Regular', fontSize: 45, color:'#00CED1', fontWeight:'700'}}>SAGE AI</Text>
+        <Text style={{textAlign : 'left' ,fontFamily: 'Michroma-Regular', fontSize: 40, color:'#00CED1'}}>SAGE AI</Text>
         
         <TouchableOpacity
           style={styles.button}

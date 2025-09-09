@@ -1,211 +1,98 @@
+import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import React from "react";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { Ionicons } from "@expo/vector-icons";
-import React, { useState } from "react";
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-
-export default function HomeScreen() {
-  const [value, setValue] = useState(1);
-
-  const increment = () => setValue(value + 1);
-  const decrement = () => {
-    if (value > 1) setValue(value - 1);
-  };
-
+export default function AccountScreen() {
   return (
-    <View style={styles.container}>
-      {/* HEADER */}
-      <View style={styles.header}>
-        <Text style={styles.logo}>SAGE</Text>
-          <Image source={require("../../assets/images/image.png")} style={styles.logoImg}/>
+    <ScrollView style={styles.container}>
+      
+      <Text style={styles.header}>Gerenciar perfil</Text>
+
+      <Text style={styles.sectionTitle}>Meu perfil</Text>
+      
+      <View style={styles.section}>
+
+        <TouchableOpacity style={styles.item}>
+          <Ionicons name="person-outline" size={22} color="#000" style={styles.icon} />
+          <View>
+            <Text style={styles.itemText}>Dados pessoais</Text>
+            <Text style={styles.subText}>Informações pessoais</Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
-      {/* BARRA DE PESQUISA */}
-      <View style={styles.searchBox}>
-        <TextInput
-          style={styles.input}
-          placeholder="O que está procurando?"
-        />
-        <Ionicons name="search" size={20} color="#888" style={styles.searchIcon}/>
+      <Text style={styles.sectionTitle}>Configurar conta</Text>
+
+      <View style={styles.sectionOne}>
+ 
+        <TouchableOpacity style={styles.item}>
+          <Ionicons name="location-outline" size={22} color="#000" style={styles.icon} />
+          <View>
+            <Text style={styles.itemText}>Endereços</Text>
+            <Text style={styles.subText}>Lugares salvos</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.item}>
+          <MaterialIcons name="credit-card" size={22} color="#000" style={styles.icon} />
+          <View>
+            <Text style={styles.itemText}>Cartões</Text>
+            <Text style={styles.subText}>Dados seguros</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.item}>
+          <FontAwesome5 name="trash" size={22} color="red" style={styles.icon} />
+          <Text style={[styles.itemText, { color: "red" }]}>Excluir conta</Text>
+        </TouchableOpacity>
       </View>
-
-      {/* GRUPO DOS CARRIN */}
-      <View style={styles.cardsContainer}>
-        <View style={styles.card}>
-          <Image source={require("../../assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
-          <Text style={styles.cardDescricao}>Lorem Ipson Lorem</Text>
-          <Text style={styles.cardMg}>150 mg</Text>
-
-          <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
-
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
-          </View>
-
-        </View>
-        <View style={styles.card}>
-          <Image source={require("../../assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
-          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
-          <Text style={styles.cardMg}>150 mg</Text>
-
-          <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
-
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
-          </View>
-
-        </View>
-        <View style={styles.card}>
-          <Image source={require("../../assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
-          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
-          <Text style={styles.cardMg}>150 mg</Text>
-
-          <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
-
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
-          </View>
-
-        </View>
-        <View style={styles.card}>
-          <Image source={require("../../assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
-          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
-          <Text style={styles.cardMg}>150 mg</Text>
-
-          <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
-
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
-          </View>
-
-        </View>
-      </View>
-
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1,
-    backgroundColor: "#fff" 
-  },
-
+  container: { flex: 1, backgroundColor: "#E5E5E5" },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    marginTop: 15
-  },
-  
-  logo: { 
-    fontSize: 40,
-    color: "#00CED1",
-    fontFamily: "Michroma",
-  },
-
-  logoImg: {
-    width: 70,
-    height: 70,
-    resizeMode: "contain",
-  },
-
-  searchBox: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginHorizontal: 10,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: "#d2d2d2",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-  },
-
-  input: { 
-    flex: 1,
-    padding: 8
-  },
-
-  searchIcon: { 
-    marginLeft: 5 
-  },
-
-  cardsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    marginHorizontal: 10,
-  },
-
-  card: {
-    borderWidth: 1,
-    borderColor: "#d2d2d2",
-    width: "48%",
-    height: "48%",
-    marginBottom: 15,
-    borderRadius: 10,
-    gap:20,
-    padding: 20,
-    alignItems: "center",
-  },
-
-    logoImgRemedio: {
-    width: "70%",
-    height: "30%",
-    resizeMode: "contain",
-  },
-
-  cardDescricao: {
     fontSize: 18,
-    fontWeight: "400",
-    textAlign: "center", 
-    color: "rgba(0, 0, 0, 1)",
+    fontWeight: "600",
+    textAlign: "center",
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+    backgroundColor: '#f9f9f9',
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  sectionOne: {
+    marginTop: 16,
+    backgroundColor: "#f9f9f9",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    paddingBottom : '200%',
   },
 
-  cardMg: {
-    fontSize: 16,
-    fontWeight: "400",
-    color: "#847E7E",
-    fontStyle: "italic"
+  section: {
+    marginTop: 16,
+    backgroundColor: "#f9f9f9",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
+  sectionTitle: {
 
-  cardBtns:{
+    fontSize: 13,
+    fontWeight: "400",
+    color: "#323131",
+    marginTop: 10,
+    marginLeft: 20
+  },
+  item: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e6e6e6",
   },
-
-  button: {
-    paddingHorizontal: 5,
-  },
-  value: {
-    fontSize: 18,
-    fontWeight: "500",
-    color: "#000",
-  },
+  icon: { marginRight: 12 },
+  itemText: { fontSize: 15, fontWeight: "500" },
+  subText: { fontSize: 12, color: "#666" },
 });
