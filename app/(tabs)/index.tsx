@@ -56,10 +56,10 @@ export default function HomeScreen() {
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.productRow}>
             <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
             <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.productImg}/>
             <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
-            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
-            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
-            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.productImg}/>
             <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
             <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
           </ScrollView>

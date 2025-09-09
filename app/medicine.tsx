@@ -2,7 +2,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ScrollView, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+
 
 export default function HomeScreen() {
   const [value, setValue] = useState(1);
@@ -13,6 +14,9 @@ export default function HomeScreen() {
   };
 
   return (
+
+    <ScrollView style={styles.container}>
+
     <View style={styles.container}>
       {/* HEADER */}
       <View style={styles.header}>
@@ -44,82 +48,102 @@ export default function HomeScreen() {
           <Text style={styles.cardMg}>150 mg</Text>
 
           <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
 
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
           </View>
 
         </View>
         <View style={styles.card}>
+          <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.logoImgRemedio}/>
+          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
+          <Text style={styles.cardMg}>150 mg</Text>
+
+          <View style={styles.cardBtns}>
+
+          </View>
+
+        </View>
+        <View style={styles.card}>
+          <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.logoImgRemedio}/>
+          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
+          <Text style={styles.cardMg}>150 mg</Text>
+
+          <View style={styles.cardBtns}>
+
+          </View>
+
+        </View>
+        <View style={styles.card}>
+          <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.logoImgRemedio}/>
+          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
+          <Text style={styles.cardMg}>150 mg</Text>
+
+          <View style={styles.cardBtns}>
+
+          </View>
+
+        </View>
+                <View style={styles.card}>
           <Image source={require("@/assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
 
           <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
 
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
           </View>
 
         </View>
-        <View style={styles.card}>
+                <View style={styles.card}>
+          <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.logoImgRemedio}/>
+          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
+          <Text style={styles.cardMg}>150 mg</Text>
+
+          <View style={styles.cardBtns}>
+
+          </View>
+
+        </View>
+                <View style={styles.card}>
+          <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.logoImgRemedio}/>
+          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
+          <Text style={styles.cardMg}>150 mg</Text>
+
+          <View style={styles.cardBtns}>
+
+          </View>
+
+        </View>
+                <View style={styles.card}>
+          <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.logoImgRemedio}/>
+          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
+          <Text style={styles.cardMg}>150 mg</Text>
+
+          <View style={styles.cardBtns}>
+
+          </View>
+
+        </View>
+                <View style={styles.card}>
           <Image source={require("@/assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
 
           <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
 
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
-          </View>
-
-        </View>
-        <View style={styles.card}>
-          <Image source={require("@/assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
-          <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
-          <Text style={styles.cardMg}>150 mg</Text>
-
-          <View style={styles.cardBtns}>
-            <TouchableOpacity style={styles.button} onPress={decrement}>
-              <Ionicons name="remove" size={22} color="#00CED1" />
-            </TouchableOpacity>
-
-            <Text style={styles.value}>{value}</Text>
-
-            <TouchableOpacity style={styles.button} onPress={increment}>
-              <Ionicons name="add" size={22} color="#00CED1" />
-            </TouchableOpacity>
           </View>
 
         </View>
       </View>
-
     </View>
+
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { 
     flex: 1,
-    backgroundColor: "#fff" 
+    backgroundColor: "#fff",
+
   },
 
   header: {
@@ -175,7 +199,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#d2d2d2",
     width: "48%",
-    height: "69%",
+    height: "30%",
     marginBottom: 15,
     borderRadius: 10,
     gap:20,
@@ -185,7 +209,7 @@ const styles = StyleSheet.create({
 
     logoImgRemedio: {
     width: "70%",
-    height: "30%",
+    height: "50%",
     resizeMode: "contain",
   },
 
