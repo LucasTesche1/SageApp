@@ -25,47 +25,56 @@ export default function TabLayout() {
         ],
       }}
     >
-      <Tabs.Screen
+            <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={40} name="house.fill" color={color} style={{ marginTop: 20 }} />,
-        }} />
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={40} name="house.fill" color={color} style={styles.icon} />
+          ),
+        }}
+      />
 
       <Tabs.Screen
         name="account"
         options={{
           title: 'Account',
-          tabBarIcon: ({ color }) => <IconSymbol size={40} name="person.fill" color={color} style={{ marginTop: 20 }} />,
-        }} />
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={40} name="person.fill" color={color} style={styles.icon} />
+          ),
+        }}
+      />
 
       <Tabs.Screen
         name="cart"
         options={{
           title: 'Cart',
-          tabBarIcon: ({ color }) => <IconSymbol size={40} name="cart.fill" color={color} style={{ marginTop: 20 }} />,
-        }} />
-
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={40} name="cart.fill" color={color} style={styles.icon} />
+          ),
+        }}
+      />
     </Tabs><FloatingButton /></>
   );
 }
 
 const styles = StyleSheet.create({
   tabBar: {
-    position: "absolute",
-    bottom: 20,
-    left: 20,
-    right: 20,
-    elevation: 5,
-    backgroundColor: "#1e1e1e",
-    borderRadius: 30,
-    height: 60,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 10 },
-    shadowRadius: 10,
-  },
-  iosPadding: {
-    paddingBottom: 20,
-  },
+      position: "absolute",
+      bottom: 20,
+      elevation: 5,
+      borderRadius: 30,
+      height: 60,
+      margin:20,
+      shadowColor: "#000",
+      shadowOpacity: 0.2,
+      shadowOffset: { width: 0, height: 5 },
+      shadowRadius: 10,
+    },
+    iosPadding: {
+      paddingBottom: 20,
+    },
+    icon: {
+      marginTop: 20,
+    },
 });
