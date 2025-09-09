@@ -65,6 +65,7 @@ cd SageApp
 
 ## Instalar dependências
 npm install
+
 npm install expo
 
 ## Rodar o servidor
