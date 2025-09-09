@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     left: 20,
-    right: 10,
+    right: 20,
     elevation: 5,
     backgroundColor: "#1e1e1e",
     borderRadius: 30,

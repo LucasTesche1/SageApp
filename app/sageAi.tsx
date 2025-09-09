@@ -37,9 +37,10 @@ const App = () => {
   }
 
   return (
-
+    
     <SafeAreaView style={styles.container}>   
-      <Text style={{ fontFamily: 'Michroma-Regular', fontSize: 24 }}>SAGE AI</Text>
+
+      <Text style={{ textAlign : 'left' ,fontFamily: 'Michroma-Regular', fontSize: 24, color:'#00CED1'}}>SAGE AI</Text>
       <TextInput
         style={styles.input}
         placeholder="Como posso te ajudar?"
@@ -55,8 +56,8 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 20 },
-  input: { borderWidth: 1, borderColor: "#ccc", marginBottom: 10, padding: 10 },
+  container: { flex: 1, padding: 20, },
+  input: { borderWidth: 1, borderColor: "#ccc", marginBottom: 10, padding: 100 },
   response: { marginTop: 20, fontSize: 16 },
 
   baseText: {

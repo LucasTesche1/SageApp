@@ -13,7 +13,7 @@ export default function FloatingButton() {
         onPress={() => router.push('/sageAi')}
       >
         <Image
-          source={require('@/constants/images/sageult.png')}
+          source={require('@/assets/images/sageult.png')}
           style={styles.icon}
         />
        
