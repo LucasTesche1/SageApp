@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 //import { sendPrompt } from "@/components/ChatBot";
 import * as Font from 'expo-font';
@@ -43,7 +44,12 @@ const App = () => {
 
 
     <SafeAreaView style={styles.container}>               
-       
+       <LinearGradient
+        colors={['#FFFFFF', '#FFFFFF', '#00CED1']} 
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={styles.gradiant}
+      >
       <View style={styles.header}>
         <Text style={{textAlign : 'left' ,fontFamily: 'Michroma-Regular', fontSize: 40, color:'#00CED1'}}>SAGE AI</Text>
         
@@ -77,6 +83,7 @@ const App = () => {
       </Pressable>
       </View>
       <Text style={styles.response}>{resposta}</Text>
+      </LinearGradient>
     </SafeAreaView>
     
 
@@ -87,7 +94,18 @@ const App = () => {
 
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, },
+
+  gradiant:{
+    width: '100%',
+    height: '100%'
+  },
+
+  container: { 
+    flex: 1, 
+    padding: 20, 
+
+  },
+
   input: { 
     borderRadius: 10, 
     borderWidth: 2, 

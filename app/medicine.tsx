@@ -1,5 +1,6 @@
 
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
@@ -16,7 +17,14 @@ export default function HomeScreen() {
       {/* HEADER */}
       <View style={styles.header}>
         <Text style={styles.logo}>SAGE</Text>
-          <Image source={require("@/assets/images/image.png")} style={styles.logoImg}/>
+        <TouchableOpacity
+          style={styles.logoImg}
+          onPress={() => router.push('/(tabs)')}
+        >
+          <Image
+            source={require('@/assets/images/image.png')}
+            style={styles.logoImg}/>
+        </TouchableOpacity>        
       </View>
 
       {/* BARRA DE PESQUISA */}
@@ -148,7 +156,8 @@ const styles = StyleSheet.create({
 
   input: { 
     flex: 1,
-    padding: 8
+    padding: 8,
+    color: '#838383ff'
   },
 
   searchIcon: { 
@@ -166,7 +175,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#d2d2d2",
     width: "48%",
-    height: "48%",
+    height: "69%",
     marginBottom: 15,
     borderRadius: 10,
     gap:20,

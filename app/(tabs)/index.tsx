@@ -14,55 +14,65 @@ export default function HomeScreen() {
   });
   
   return (
-    <View style={styles.container}>
-      {/* HEADER */}
-      <View style={styles.header}>
-        <Text style={styles.logo}>SAGE</Text>
-          <Image source={require("../../assets/images/image.png")} style={styles.logoImg}/>
-      </View>
 
-      {/* BARRA DE PESQUISA */}
-      <View style={styles.searchBox}>
-        <TextInput
-          style={styles.input}
-          placeholder="O que está procurando?"
-        />
-        <Ionicons name="search" size={20} color="#888" style={styles.searchIcon}/>
-      </View>
+    <ScrollView style={styles.container}>
 
-      <ScrollView>
-        {/* CARROSSEL DE ICONES */}
-        <View style={styles.circleRow}>
-        <TouchableOpacity
-          style={styles.circle}   
-          onPress={() => router.push('/medicine')}
-          
-        >
-        <Image
-          source={require('@/assets/images/icon-pill.png')}
-          style={styles.img}
-        />  
-
-        </TouchableOpacity>
-          <View style={styles.circle}/>
-          <View style={styles.circle}/>
-          <View style={styles.circle}/>
+      <View style={styles.container}>
+        {/* HEADER */}
+        <View style={styles.header}>
+          <Text style={styles.logo}>SAGE</Text>
+            <Image source={require("@/assets/images/image.png")} style={styles.logoImg}/>
         </View>
 
-        {/* PRODUTOS */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.productRow}>
-          <Image source={require("../../assets/images/remedios/1.png")} style={styles.productImg}/>
-          <Image source={require("../../assets/images/remedios/2.jpg")} style={styles.productImg}/>
-          <Image source={require("../../assets/images/remedios/1.png")} style={styles.productImg}/>
-          <Image source={require("../../assets/images/remedios/2.jpg")} style={styles.productImg}/>
+        {/* BARRA DE PESQUISA */}
+        <View style={styles.searchBox}>
+          <TextInput
+            style={styles.input}
+            placeholder="O que está procurando?"
+          />
+          <Ionicons name="search" size={20} color="#888" style={styles.searchIcon}/>
+        </View>
+
+        <ScrollView>
+          {/* CARROSSEL DE ICONES */}
+          <View style={styles.circleRow}>
+          <TouchableOpacity
+            style={styles.circle}   
+            onPress={() => router.push('/medicine')}
+            
+          >
+          <Image
+            source={require('@/assets/images/icon-pill.png')}
+            style={styles.img}
+          />  
+
+          </TouchableOpacity>
+            <View style={styles.circle}/>
+            <View style={styles.circle}/>
+            <View style={styles.circle}/>
+          </View>
+
+          {/* PRODUTOS */}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.productRow}>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+          </ScrollView>
+
+          {/* BANNER */}
+          <View style={styles.banner}>
+            <Image source={require("../../assets/images/remedios/logomain.png")} style={styles.bannerImg}/>
+          </View>
         </ScrollView>
 
-        {/* BANNER */}
-        <View style={styles.banner}>
-          <Image source={require("../../assets/images/remedios/logomain.png")} style={styles.bannerImg}/>
-        </View>
-      </ScrollView>
-    </View>
+      </View>
+
+    </ScrollView>
   );
 }
 
@@ -100,7 +110,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
   },
-  input: { flex: 1, padding: 8 },
+  input: { flex: 1, padding: 8, color:'#838383ff' },
   searchIcon: { marginLeft: 5 },
 
   circleRow: {
