@@ -1,50 +1,71 @@
-# Welcome to your Expo app 👋
+# SageApp – Aplicativo de Farmácia Inteligente
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+O **SageApp** é um sistema completo para farmácias, oferecendo recursos modernos para gestão, compras de medicamentos e integração com IA.  
+Um dos principais diferenciais é o **chatbot inteligente integrado à API do Google Gemini**, capaz de responder dúvidas sobre fármacos, bulas, interações medicamentosas e orientações gerais de saúde (⚠️ sem substituir um profissional médico).
 
-## Get started
+<div align=center>
+<img width="363" height="364" alt="Image" src="https://github.com/user-attachments/assets/84a1e1c6-61d4-4b15-98c4-2df8d7f6e1eb" />
+</div>
 
-1. Install dependencies
+## ✨ Funcionalidades
 
-   ```bash
-   npm install
-   ```
+- 🛒 **E-commerce de medicamentos**  
+  - Catálogo completo de fármacos  
+  - Carrinho de compras e checkout seguro  
 
-2. Start the app
+- 📦 **Gestão de estoque**  
+  - Controle de entrada e saída de medicamentos  
+  - Alertas de validade e estoque mínimo  
 
-   ```bash
-   npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+- 🤖 **Chatbot inteligente (Google Gemini)**  
+  - Responde dúvidas sobre medicamentos  
+  - Explica bulas e efeitos colaterais  
+  - Sugere cuidados gerais de saúde  
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- 👤 **Área do usuário**  
+  - Histórico de pedidos  
+  - Notificações personalizadas  
+  - Carteira de receitas digitais  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠️ Tecnologias Utilizadas
 
-When you're ready, run:
+- **Frontend:** React Native *(ajuste conforme usado)*  
+- **Backend:** Node.js + Express + Expo *(ajuste conforme usado)*  
+- **Autenticação:** Apache 2.0
+- **Integração com IA:** [Google Gemini API](https://ai.google.dev/)  
+- **Infraestrutura:** Docker
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🤖 Integração com Google Gemini
 
-## Learn more
+O chatbot é integrado via API que consome os serviços do **Google Gemini**, possibilitando interações contextuais com os usuários.
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+🚀 Como Executar o Projeto
 
-Join our community of developers creating universal apps.
+# Pré-requisitos:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Node.js 
+- Docker (opcional, para ambiente containerizado)
+- React native
+- Expo
+
+# Passos:
+
+## Clonar o repositório
+git clone https://github.com/LucasTesche1/SageApp.git
+
+cd SageApp
+
+## Instalar dependências
+npm install
+npm install expo
+
+## Rodar o servidor
+npx expo start
