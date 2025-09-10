@@ -2,7 +2,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useState } from "react";
-import { Image, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
 
 export default function HomeScreen() {
   const [value, setValue] = useState(1);
@@ -13,6 +14,8 @@ export default function HomeScreen() {
   };
 
   return (
+
+    <ScrollView style={styles.container}>
     <View style={styles.container}>
       {/* HEADER */}
       <View style={styles.header}>
@@ -87,8 +90,9 @@ export default function HomeScreen() {
           </View>
 
         </View>
+
         <View style={styles.card}>
-          <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.logoImgRemedio}/>
+          <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
 
@@ -109,7 +113,14 @@ export default function HomeScreen() {
 
       </View>
       
-    <View style={styles.buttonContainer}>
+
+    {/*Area de continuar*/}
+    </View>
+        <View style={styles.buttonContainer}>
+      <Text style={styles.total}>
+        Total:
+        R$20,00
+      </Text>
         <Pressable
           style={({ pressed }) => [
             styles.buttonSend,
@@ -117,12 +128,10 @@ export default function HomeScreen() {
           ]}
           
         >
-        <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight: 'bold' }}>Enviar</Text>
+        <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight: 'bold' }}>Continuar</Text>
         </Pressable>
     </View>
-      
-
-    </View>
+    </ScrollView>
     
   );
 }
@@ -146,12 +155,15 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "#00CED1",
     fontFamily: "Michroma",
+    paddingLeft : 20
   },
 
   logoImg: {
     width: 70,
     height: 70,
     resizeMode: "contain",
+    paddingRight : 60,
+    top:1
   },
 
   searchBox: {
@@ -229,8 +241,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
 
-  buttonSend: {
-    top:5,
+  buttonSend: {    
     width: 200,
     height: 60,
     borderRadius: 35,
@@ -248,7 +259,20 @@ const styles = StyleSheet.create({
 
   buttonContainer:{
     display: 'flex',
+    flexDirection:'row',
     alignItems : 'center',
-    paddingTop:150
+    justifyContent:'space-around',
+    paddingTop:250,
+    
   },
+
+  total:{
+    color:'#000', 
+    fontFamily: 'Tahoma', 
+    fontWeight: 'normal', 
+    fontSize:18,
+    paddingLeft: 20
+    
+
+  }
 });

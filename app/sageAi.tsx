@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 30,
     flexDirection: 'row',
-    gap:70
+    
   },
 
   buttonContainer:{
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    top:5,
+    top:1,
     width: 60,
     height: 60,
     borderRadius: 35,
@@ -151,8 +151,10 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 5 },
-    shadowRadius: 5,
+    shadowRadius: 10,
     elevation: 5,
+    marginLeft:90
+    
     
 
   },

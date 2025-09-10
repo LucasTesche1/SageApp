@@ -1,9 +1,9 @@
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
+import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React from "react";
-import { Image, Touchable, TouchableOpacity,ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 
 
@@ -34,8 +34,14 @@ export default function HomeScreen() {
         </View>
 
         <ScrollView>
-          {/* CARROSSEL DE ICONES */}
+          {/* CARROSSEL DE ICONES */}          
           <View style={styles.circleRow}>
+
+            {/* Vinheta por cima */}
+            <LinearGradient
+              colors={['rgba(255, 255, 255, 0.7)', 'transparent']} 
+              style={styles.vignette}
+            />
           <TouchableOpacity
             style={styles.circle}   
             onPress={() => router.push('/medicine')}
@@ -68,6 +74,17 @@ export default function HomeScreen() {
           <View style={styles.banner}>
             <Image source={require("../../assets/images/remedios/logomain.png")} style={styles.bannerImg}/>
           </View>
+                    {/* PRODUTOS */}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.productRow}>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+          </ScrollView>
         </ScrollView>
 
       </View>
@@ -92,12 +109,15 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "#00CED1",
     fontFamily: "Michroma",
+    paddingLeft : 20
   },
 
   logoImg: {
     width: 70,
     height: 70,
     resizeMode: "contain",
+    paddingRight : 60,
+    top:1
   },
 
   searchBox: {
@@ -171,5 +191,13 @@ const styles = StyleSheet.create({
     width : 37,
     height : 37,
     resizeMode : 'contain',
-  }
+  },
+
+  vignette: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
 });

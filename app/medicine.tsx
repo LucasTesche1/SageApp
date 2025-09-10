@@ -2,7 +2,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useState } from "react";
-import { ScrollView, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 
 export default function HomeScreen() {
@@ -159,14 +159,16 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "#00CED1",
     fontFamily: "Michroma",
+    paddingLeft : 20
   },
 
   logoImg: {
     width: 70,
     height: 70,
     resizeMode: "contain",
+    paddingRight : 60,
+    top:1
   },
-
   searchBox: {
     flexDirection: "row",
     alignItems: "center",
