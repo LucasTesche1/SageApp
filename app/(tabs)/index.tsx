@@ -1,9 +1,8 @@
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import { router } from "expo-router";
 import React from "react";
-import { Image, Touchable, TouchableOpacity,ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 
 
@@ -68,6 +67,20 @@ export default function HomeScreen() {
           <View style={styles.banner}>
             <Image source={require("../../assets/images/remedios/logomain.png")} style={styles.bannerImg}/>
           </View>
+
+                    {/* PRODUTOS */}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.productRow}>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
+          </ScrollView>
+
+
         </ScrollView>
 
       </View>
