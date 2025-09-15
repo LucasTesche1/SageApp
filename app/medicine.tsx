@@ -1,17 +1,11 @@
 
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import React, { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 
 export default function HomeScreen() {
-  const [value, setValue] = useState(1);
-
-  const increment = () => setValue(value + 1);
-  const decrement = () => {
-    if (value > 1) setValue(value - 1);
-  };
 
   return (
 
@@ -40,13 +34,21 @@ export default function HomeScreen() {
         <Ionicons name="search" size={20} color="#888" style={styles.searchIcon}/>
       </View>
 
-      {/* GRUPO DOS CARRIN */}
+      {/* GRUPO DOS REMEDIOS */}
       <View style={styles.cardsContainer}>
         <View style={styles.card}>
           <Image source={require("@/assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem</Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -56,7 +58,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>          
           <View style={styles.cardBtns}>
 
           </View>
@@ -66,7 +76,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -76,7 +94,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -86,7 +112,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -96,7 +130,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -106,7 +148,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -116,7 +166,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -126,7 +184,15 @@ export default function HomeScreen() {
           <Image source={require("@/assets/images/remedios/1.png")} style={styles.logoImgRemedio}/>
           <Text style={styles.cardDescricao}>Lorem Ipson Lorem </Text>
           <Text style={styles.cardMg}>150 mg</Text>
-
+          <Pressable
+            style={({ pressed }) => [
+              styles.buttonSee,
+              pressed && { opacity: 0.6 }
+            ]}
+            
+          >
+          <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight:'thin' }}>Ver</Text>
+          </Pressable>
           <View style={styles.cardBtns}>
 
           </View>
@@ -201,7 +267,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#d2d2d2",
     width: "48%",
-    height: "30%",
+    height: "39%",
     marginBottom: 15,
     borderRadius: 10,
     gap:20,
@@ -243,4 +309,11 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#000",
   },
+
+  buttonSee:{
+    backgroundColor: '#C80000',
+    padding: 10,
+    paddingHorizontal:20,
+    borderRadius: 30
+  }
 });

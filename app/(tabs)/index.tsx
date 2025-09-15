@@ -48,14 +48,44 @@ export default function HomeScreen() {
             
           >
           <Image
-            source={require('@/assets/images/icon-pill.png')}
+            source={require('@/assets/images/home/icon-pill.png')}
             style={styles.img}
           />  
 
           </TouchableOpacity>
-            <View style={styles.circle}/>
-            <View style={styles.circle}/>
-            <View style={styles.circle}/>
+          <TouchableOpacity
+            style={styles.circle}   
+            onPress={() => router.push('/medicine')}
+            
+          >
+          <Image
+            source={require('@/assets/images/home/icon-hospital.png')}
+            style={styles.img}
+          />  
+
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.circle}   
+            onPress={() => router.push('/medicine')}
+            
+          >
+          <Image
+            source={require('@/assets/images/home/icon-tab.png')}
+            style={styles.img}
+          />  
+
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.circle}   
+            onPress={() => router.push('/medicine')}
+            
+          >
+          <Image
+            source={require('@/assets/images/home/icon-help.png')}
+            style={styles.img}
+          />  
+
+          </TouchableOpacity>
           </View>
 
           {/* PRODUTOS */}
