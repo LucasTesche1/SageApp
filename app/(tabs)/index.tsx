@@ -74,6 +74,7 @@ export default function HomeScreen() {
           <View style={styles.banner}>
             <Image source={require("../../assets/images/remedios/logomain.png")} style={styles.bannerImg}/>
           </View>
+
                     {/* PRODUTOS */}
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.productRow}>
             <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
@@ -85,6 +86,8 @@ export default function HomeScreen() {
             <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
             <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
           </ScrollView>
+
+
         </ScrollView>
 
       </View>
