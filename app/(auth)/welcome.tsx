@@ -1,5 +1,5 @@
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -24,6 +24,7 @@ export default function WelcomeScreen() {
           
           <TouchableOpacity 
           style={styles.btnLogin}
+          onPress={() => router.push('/login')}
           >Login</TouchableOpacity>
           
           <TouchableOpacity 
