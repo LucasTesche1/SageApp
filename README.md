@@ -1,6 +1,6 @@
 # SageApp – Aplicativo de Farmácia Inteligente
 
-O **SageApp** é um sistema completo para farmácias, oferecendo recursos modernos para gestão, compras de medicamentos e integração com IA.  
+O **SageApp** é um aplicativo completo para farmácias, oferecendo recursos modernos para gestão, compras de medicamentos e integração com IA.  
 Um dos principais diferenciais é o **chatbot inteligente integrado à API do Google Gemini**, capaz de responder dúvidas sobre fármacos, bulas, interações medicamentosas e orientações gerais de saúde (⚠️ sem substituir um profissional médico).
 
 <div align=center>
