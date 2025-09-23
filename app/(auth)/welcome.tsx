@@ -29,12 +29,14 @@ export default function WelcomeScreen() {
           
           <TouchableOpacity 
           style={styles.btnRegister}
+          onPress={() => router.push('/register')}
           >Cadastro</TouchableOpacity>
         </View>
 
 
           <TouchableOpacity 
           style={styles.defaultText}
+          onPress={() => router.push('/login-employee')}          
           >Login Funcionário</TouchableOpacity>
       </View>
     

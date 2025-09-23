@@ -1,4 +1,4 @@
-import RegisterForm from "@/components/RegisterForm";
+import LoginForm from "@/components/LoginForm";
 import { useFonts } from "expo-font";
 import { router, Stack } from "expo-router";
 import React from "react";
@@ -29,16 +29,16 @@ export default function WelcomeScreen() {
                     </View>
 
                     <View style={styles.textContainer}>
-                        <Text style={styles.logoText}>Olá, cadastre-se para começar</Text>            
+                        <Text style={styles.logoText}>LOGIN FUNCIONÁRIO</Text>            
                     </View>
 
-                    <RegisterForm/>
+                    <LoginForm/>
                     
                     <View style={styles.containerButtons}>
                         <TouchableOpacity
-                        style={styles.btnRegister}
-                        onPress={() => router.push('/login')}
-                        >Cadastrar</TouchableOpacity>
+                        style={styles.btnLogin}
+                        onPress={() => router.push('/')}
+                        >Entrar</TouchableOpacity>
                     </View>
 
                 </View>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
  
   logoText:{
     fontSize: 30,
-    color: "#00CED1",
+    color: "#00D138",
     fontFamily: "Michroma",
     textAlign:'left',
     fontWeight:'bold'
@@ -97,11 +97,12 @@ const styles = StyleSheet.create({
 
   defaultText:{
     fontSize: 20,
-    color: "#00CED1",
+    color: "#00D138",
     fontFamily: "Arial",
     textAlign:'center',
     bottom:20,
     textDecorationLine: 'underline',
+    fontWeight:'bold'
   
   },
 
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     width: 350,
     height: 60,
     borderRadius: 10,
-    backgroundColor: '#00ced1c2', 
+    backgroundColor: '#00D138', 
     color:'#fff',
     justifyContent: 'center',
     alignItems: 'center',
