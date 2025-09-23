@@ -2,7 +2,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import * as yup from 'yup';
+
 
 export default function WelcomeScreen() {
     const [fontsLoaded] = useFonts({
@@ -10,16 +10,6 @@ export default function WelcomeScreen() {
         
     });
 
-    const loginValidationSchema = yup.object().shape({
-        email: yup
-            .string()
-            .email('Please enter a valid email')
-            .required('Email is required'),
-        password: yup
-            .string()
-            .min(6, ({ min }) => `Password must be at least ${min} characters`)
-            .required('Password is required'),
-    });
   return (
 
     <>
