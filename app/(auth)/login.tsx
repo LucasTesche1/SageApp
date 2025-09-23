@@ -1,5 +1,6 @@
+import LoginForm from "@/components/LoginForm";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -10,43 +11,43 @@ export default function WelcomeScreen() {
         
     });
 
-  return (
+    return (
 
-    <>
-      
-      <Stack.Screen options={{ headerShown: false }} />
-
-        <View style={styles.container}>
-            <View style={styles.returnContainer}>
-            <Image source={require("@/assets/images/return.png")}/>
-            </View>
-
-            <View style={styles.textContainer}>
-                <Text style={styles.logoText}>Bem-vindo(a) de volta!</Text>            
-            </View>
-
-            <View style={styles.formContainer}>
-             
-            </View>
-
-
-
-            <View style={styles.containerButtons}>
-                <TouchableOpacity
-                style={styles.btnLogin}
-                >Entrar</TouchableOpacity>
-            </View>
-
-
-            <TouchableOpacity 
-            style={styles.defaultText}
-            >Login Funcionário</TouchableOpacity>
-      </View>
+        <>
         
-    </>
-    
-  );
-}
+            <Stack.Screen options={{ headerShown: false }} />
+
+                <View style={styles.container}>
+                    <View style={styles.returnContainer}>
+                    <TouchableOpacity 
+                    onPress={() => router.push('/welcome')}
+                    >
+                    <Image
+                    source={require("@/assets/images/return.png")}/></TouchableOpacity>
+
+
+                    </View>
+
+                    <View style={styles.textContainer}>
+                        <Text style={styles.logoText}>Bem-vindo(a) de volta!</Text>            
+                    </View>
+
+                    <LoginForm/>
+                    
+                    <View style={styles.containerButtons}>
+                        <TouchableOpacity
+                        style={styles.btnLogin}
+                        >Entrar</TouchableOpacity>
+                    </View>
+                    <TouchableOpacity 
+                    style={styles.defaultText}
+                    >Login Funcionário</TouchableOpacity>
+                </View>
+            
+        </>
+        
+    );
+};
 
 
 
