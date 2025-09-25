@@ -1,11 +1,26 @@
 import LoginForm from "@/components/LoginForm";
+import { login } from "@/services/Authentication";
 import { useFonts } from "expo-font";
 import { router, Stack } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
 
 
-export default function WelcomeScreen() {
+
+export default function LoginScreen() {
+
+  async function handleLogin(email:string, password:string) {
+    try{
+      const response = await login({email, password});
+      console.log("Usuário logado: ", response);
+      router.push("/");
+    }catch(error){
+      console.error("Erro no login: ",error);
+      Alert.alert("Erro", "Email ou senha inválidos");
+    }
+    
+  }
+
     const [fontsLoaded] = useFonts({
         Michroma: require("../../assets/fonts/Michroma-Regular.ttf"),
         
@@ -24,26 +39,16 @@ export default function WelcomeScreen() {
                     >
                     <Image
                     source={require("@/assets/images/return.png")}/></TouchableOpacity>
-
-
                     </View>
-
                     <View style={styles.textContainer}>
                         <Text style={styles.logoText}>Bem-vindo(a) de volta!</Text>            
                     </View>
-
-                    <LoginForm/>
-                    
-                    <View style={styles.containerButtons}>
-                        <TouchableOpacity
-                        style={styles.btnLogin}
-                        onPress={() => router.push('/')}
-                        >Entrar</TouchableOpacity>
-                    </View>
-                    <TouchableOpacity 
-                    style={styles.defaultText}
-                    >Login Funcionário</TouchableOpacity>
+                    <LoginForm onSubmit={handleLogin}/>
                 </View>
+                  <TouchableOpacity 
+                  style={styles.defaultText}
+                  onPress={() => router.push('/(auth)/login-employee')}
+                  >Login Funcionário</TouchableOpacity>
             
         </>
         
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontFamily:'Arial',
   },
-  
+
   btnRegister:{
     width: 350,
     height: 60,

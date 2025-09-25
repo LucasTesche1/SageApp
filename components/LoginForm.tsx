@@ -1,7 +1,17 @@
-import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { login } from "@/services/Authentication";
+import { router } from "expo-router";
+import React, {useState} from "react";
+import { StyleSheet, TextInput, View, Button, TouchableOpacity } from "react-native";
 
-export default function LoginForm(){
+interface LoginFromProps {
+  onSubmit:(email: string, password: string) => void;
+}
+
+
+export default function LoginForm({onSubmit}: LoginFromProps){
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
         <View style={styles.container}>
@@ -9,6 +19,8 @@ export default function LoginForm(){
             
             <TextInput 
                 style={styles.input}
+                value={email}
+                onChangeText={setEmail}
                 placeholder="E-mail"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -16,10 +28,18 @@ export default function LoginForm(){
 
             <TextInput
                 style={styles.input}
+                value={password}
+                onChangeText={setPassword}
                 placeholder="Senha"
                 secureTextEntry                    
             />
             
+            <View style={styles.containerButtons}>
+                <TouchableOpacity
+                style={styles.btnLogin}
+                onPress={() => onSubmit(email, password)}
+                >Entrar</TouchableOpacity>
+            </View> 
       </View>
 
   );
@@ -43,7 +63,37 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     padding: 12,
     marginBottom: 10,
-  }
+ },
 
+  defaultText:{
+  fontSize: 20,
+  color: "#00CED1",
+  fontFamily: "Arial",
+  textAlign:'center',
+  bottom:20,
+  textDecorationLine: 'underline',
+  
+  },
+
+    btnLogin:{
+    width: 350,
+    height: 60,
+    borderRadius: 10,
+    backgroundColor: '#00ced1c2', 
+    color:'#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontFamily:'Arial',
+  },
+
+  
+  containerButtons:{
+    flex: 1, 
+    top:100,
+    justifyContent:'flex-start',
+    alignItems:'center',
+    backgroundColor: "#fff" ,
+    gap:10
+  },
 });
 
