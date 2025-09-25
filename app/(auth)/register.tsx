@@ -1,11 +1,24 @@
 import RegisterForm from "@/components/RegisterForm";
+import { register } from "@/services/Authentication";
 import { useFonts } from "expo-font";
 import { router, Stack } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
 export default function WelcomeScreen() {
+
+    async function handleRegister(name:string, email:string, password:string) {
+      try{
+        const response = await register({name, email, password});
+        console.log("Usuário logado: ", response);
+        router.push("/login");
+      }catch(error){
+        console.error("Erro no registro: ",error);
+        Alert.alert("Erro", "Nome, email ou senha inválidos");
+      }
+      
+    }
     const [fontsLoaded] = useFonts({
         Michroma: require("../../assets/fonts/Michroma-Regular.ttf"),
         
@@ -32,14 +45,9 @@ export default function WelcomeScreen() {
                         <Text style={styles.logoText}>Olá, cadastre-se para começar</Text>            
                     </View>
 
-                    <RegisterForm/>
+                    <RegisterForm onSubmit={handleRegister}/>
                     
-                    <View style={styles.containerButtons}>
-                        <TouchableOpacity
-                        style={styles.btnRegister}
-                        onPress={() => router.push('/login')}
-                        >Cadastrar</TouchableOpacity>
-                    </View>
+
 
                 </View>
             

@@ -1,4 +1,5 @@
 import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -41,7 +42,7 @@ export default function AccountScreen() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.item}>
+        <TouchableOpacity style={styles.item} onPress={() => router.push('/welcome')}>
           <FontAwesome5 name="trash" size={22} color="red" style={styles.icon} />
           <Text style={[styles.itemText, { color: "red" }]}>Excluir conta</Text>
         </TouchableOpacity>

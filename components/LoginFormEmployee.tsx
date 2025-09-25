@@ -1,27 +1,19 @@
-
 import React, { useState } from "react";
 import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 
-interface RegisterFromProps {
-  onSubmit:(name: string,email: string, password: string) => void;
+interface LoginFromProps {
+  onSubmit:(email: string, password: string) => void;
 }
 
-export default function RegisterForm({onSubmit}: RegisterFromProps){
-  const [name, setName] = useState("");
+
+export default function LoginFormEmployee({onSubmit}: LoginFromProps){
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
         <View style={styles.container}>
             
-            <TextInput 
-                style={styles.input}
-                value={name}
-                onChangeText={setName}
-                placeholder="Nome de usuário"
-                keyboardType="default"
-                autoCapitalize="none"
-            />
             
             <TextInput 
                 style={styles.input}
@@ -39,14 +31,13 @@ export default function RegisterForm({onSubmit}: RegisterFromProps){
                 placeholder="Senha"
                 secureTextEntry                    
             />
-
+            
             <View style={styles.containerButtons}>
                 <TouchableOpacity
-                style={styles.btnRegister}
-                onPress={() => onSubmit(name, email, password)}
-                >Cadastrar</TouchableOpacity>
-            </View>             
-            
+                style={styles.btnLogin}
+                onPress={() => onSubmit(email, password)}
+                >Entrar</TouchableOpacity>
+            </View> 
       </View>
 
   );
@@ -70,16 +61,24 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     padding: 12,
     marginBottom: 10,
+ },
+
+  defaultText:{
+  fontSize: 20,
+  color: "#00CED1",
+  fontFamily: "Arial",
+  textAlign:'center',
+  bottom:20,
+  textDecorationLine: 'underline',
+  
   },
 
-  btnRegister:{
+    btnLogin:{
     width: 350,
     height: 60,
-    borderWidth:1,
     borderRadius: 10,
-    borderColor:'#000',
-    backgroundColor: '#fff', 
-    color:'#000',
+    backgroundColor: '#00D138', 
+    color:'#fff',
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily:'Arial',
@@ -94,6 +93,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff" ,
     gap:10
   },
-
 });
 
