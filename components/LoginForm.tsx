@@ -1,4 +1,3 @@
-import { login } from "@/services/Authentication";
 import { router } from "expo-router";
 import React, {useState} from "react";
 import { StyleSheet, TextInput, View, Button, TouchableOpacity } from "react-native";
