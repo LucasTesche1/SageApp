@@ -1,21 +1,30 @@
 import { sendPrompt } from '@/services/Gemini';
+import { useFocusEffect } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React, { useState } from "react";
 import {
+  ActivityIndicator,
+  Alert,
   Image,
   Pressable,
   SafeAreaView, StyleSheet, Text,
   TextInput, TouchableOpacity, View
 } from 'react-native';
 
-
 const App = () => {
-  
+  useFocusEffect(
+  React.useCallback(() => {
+      Alert.alert("Aviso", "O SageAI ainda está em desinvolvimento, procure sempre ser objetivo na pergunta, por exemplo: 'Estou com dor nos olhos'.");
+    }, [])
+  );
+
   const [fontsLoaded, setFontsLoaded] = React.useState(false);
   const [prompt, setPrompt] = useState("");
   const [resposta, setResposta] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [typedText, setTypedText] = useState("");
 
   const loadFonts = async () => {
   await Font.loadAsync({
@@ -28,12 +37,28 @@ const App = () => {
     loadFonts();
   }, []);
 
+
   const handleSend = async () => {
     try {
-      const result = await sendPrompt(prompt);
+
+      setLoading(true);
+
+      const data = await sendPrompt(prompt);
       setResposta(data.resposta);
+      setTypedText(data.resposta.charAt(0));
+
+      let i = 0;
+      const intervalo = setInterval(() => {
+        setTypedText((prev) => prev + data.resposta.charAt(i));
+        i++;
+        if (i >= data.resposta.length) clearInterval(intervalo);
+      }, 40) //40ms por letra
+
     } catch (error) {
       setResposta("Erro ao enviar pergunta: " + error);
+      setTypedText("");
+    } finally{
+      setLoading(false);
     }
   }
 
@@ -72,14 +97,22 @@ const App = () => {
       <Pressable
         style={({ pressed }) => [
           styles.buttonSend,
-          pressed && { opacity: 0.6 } // muda a opacidade quando pressionado
+          pressed && { opacity: 0.6 } 
         ]}
         onPress={handleSend}
       >
         <Text style={{  fontFamily: 'Tahoma', fontWeight: '500' }}>Enviar</Text>
       </Pressable>
       </View>
-      <Text style={styles.response}>{resposta}</Text>
+
+      
+      {/* Mostra o loading */}
+      {loading && <ActivityIndicator size='large' color="#00CED1" />}
+      
+
+      <View style={styles.containerResponse}>
+      <Text style={styles.response}>{typedText}</Text>
+      </View>
       </LinearGradient>
     </SafeAreaView>
     
@@ -107,17 +140,46 @@ const styles = StyleSheet.create({
     borderRadius: 10, 
     borderWidth: 2, 
     borderColor: "#D2D2D2", 
-    marginBottom: 10, 
-    padding:100, 
-    marginHorizontal : 22,
-    textAlign:'center',
-    textAlignVertical: 'top', 
 
+    marginBottom: 10, 
+    marginHorizontal: 22,
+    padding: 15,
+    height: 100, 
+
+    textAlign: 'left', 
+    textAlignVertical: 'top', 
     color:'#847E7E',
-    fontFamily:'Arial'
+    fontFamily:'Arial',
+    fontSize: 16,
+    
   
   },
-  response: { marginTop: 20, fontSize: 16 },
+
+  containerResponse:{
+
+    flex:1,
+    marginHorizontal:30,
+    top:50,
+    backgroundColor:'#00CED1',
+    borderRadius:10,
+
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 10,
+    elevation: 5,
+  },
+
+  response: { 
+
+    padding:30,
+    marginTop: 20, 
+    fontSize: 20,
+    fontFamily:'Arial',
+    color:'#fff',
+    letterSpacing:1.5
+
+  },
 
   baseText: {
     fontFamily : ''
