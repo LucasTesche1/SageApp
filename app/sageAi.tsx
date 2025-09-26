@@ -1,23 +1,20 @@
-import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-//import { sendPrompt } from "@/components/ChatBot";
+import { sendPrompt } from '@/services/Gemini';
 import * as Font from 'expo-font';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React, { useState } from "react";
 import {
   Image,
   Pressable,
-  SafeAreaView,
-  Text,
-  TextInput,
-  View
-} from "react-native";
+  SafeAreaView, StyleSheet, Text,
+  TextInput, TouchableOpacity, View
+} from 'react-native';
 
 
 const App = () => {
   
   const [fontsLoaded, setFontsLoaded] = React.useState(false);
-  const [input, setInput] = useState("");
+  const [prompt, setPrompt] = useState("");
   const [resposta, setResposta] = useState("");
 
   const loadFonts = async () => {
@@ -31,12 +28,12 @@ const App = () => {
     loadFonts();
   }, []);
 
-  async function handleSend() {
+  const handleSend = async () => {
     try {
-      const result = await sendPrompt(input);
-      setResposta(result);
-    } catch (err: any) {
-      setResposta("Erro: " + err.message);
+      const result = await sendPrompt(prompt);
+      setResposta(data.resposta);
+    } catch (error) {
+      setResposta("Erro ao enviar pergunta: " + error);
     }
   }
 
@@ -67,8 +64,8 @@ const App = () => {
       <TextInput
         style={styles.input}
         placeholder="Como posso te ajudar?"
-        value={input}
-        onChangeText={setInput}
+        value={prompt}
+        onChangeText={setPrompt}
       />
 
       <View style={styles.buttonContainer}>

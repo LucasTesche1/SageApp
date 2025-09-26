@@ -26,7 +26,7 @@ export interface APIResponse {
 }
 
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: "https://api-sageapp-services.onrender.com",
     headers: {"Content-Type" : "application/json"},
 });
@@ -49,3 +49,4 @@ export async function register(data: RegisterRequest): Promise<APIResponse> {
     return resp.data;
     
 }
+
