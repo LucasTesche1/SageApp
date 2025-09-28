@@ -1,4 +1,5 @@
 import { sendPrompt } from '@/services/Gemini';
+import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -67,13 +68,14 @@ const App = () => {
 
     <SafeAreaView style={styles.container}>               
        <LinearGradient
-        colors={['#FFFFFF', '#FFFFFF', '#00CED1']} 
+        colors={['#F0F8FF', '#F0F8FF', '#00BCD4']} 
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={styles.gradiant}
       >
       <View style={styles.header}>
-        <Text style={{textAlign : 'left' ,fontFamily: 'Michroma-Regular', fontSize: 40, color:'#00CED1'}}>SAGE AI</Text>
+        <Text style={{textAlign : 'left' ,fontFamily: 'Michroma-Regular', fontSize: 40, color:'#00CED1'}}>SAGE </Text>
+        <Text style={{textAlign : 'left' ,fontFamily: 'Michroma-Regular', fontSize: 40, color:'#23fbffa8'}}>AI</Text>
         
         <TouchableOpacity
           style={styles.button}
@@ -86,12 +88,19 @@ const App = () => {
         
         </TouchableOpacity>
       </View>
+
+      <View style={styles.inputContainer}>
       <TextInput
         style={styles.input}
         placeholder="Como posso te ajudar?"
         value={prompt}
-        onChangeText={setPrompt}
+        onChangeText={setPrompt}        
       />
+      <Ionicons name="search" size={20} color="#888" style={styles.searchIcon}/>
+      </View>
+
+      
+      
 
       <View style={styles.buttonContainer}>
       <Pressable
@@ -101,12 +110,21 @@ const App = () => {
         ]}
         onPress={handleSend}
       >
+        {/*vetor de fundo*/}
+        <Image
+          source={require('@/assets/images/sageAi/Vector1.png')}
+          style={styles.img}
+        />
+
+        <View style={styles.row}>
         <Text style={{  fontFamily: 'Tahoma', fontWeight: '500' }}>Enviar</Text>
+        <Ionicons name="send" size={20} color="#000" style={styles.sendIcon}/>
+        </View>
       </Pressable>
       </View>
 
       
-      {/* Mostra o loading */}
+      {/* mostra o loading */}
       {loading && <ActivityIndicator size='large' color="#00CED1" />}
       
 
@@ -136,23 +154,67 @@ const styles = StyleSheet.create({
 
   },
 
-  input: { 
-    borderRadius: 10, 
-    borderWidth: 2, 
-    borderColor: "#D2D2D2", 
+  inputContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
 
+    borderRadius: 50, 
+    borderColor: "#fff", 
+    backgroundColor: '#fff',
+    borderWidth:10,
+    
     marginBottom: 10, 
     marginHorizontal: 22,
     padding: 15,
-    height: 100, 
+    height: 60, 
 
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 10,
+    elevation: 5,
+  },
+
+  img:{
+    ...StyleSheet.absoluteFillObject,
+    resizeMode:'cover',
+    marginLeft:3,
+    top:34.5,
+    
+  },
+
+  row:{
+    flex:1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'center'
+   
+  },
+
+  input: { 
+    flex:1,
+    height:60,
     textAlign: 'left', 
+    letterSpacing:0.5,
     textAlignVertical: 'top', 
     color:'#847E7E',
-    fontFamily:'Arial',
+    fontFamily:'Roboto',
     fontSize: 16,
+
+  },
+
+  searchIcon:{
+    width:20,
+    height:20
+  },
+
+  sendIcon:{
     
-  
+    position:'absolute',
+    left:70,
+    width:20,
+    height:20
+
   },
 
   containerResponse:{
@@ -175,7 +237,7 @@ const styles = StyleSheet.create({
     padding:30,
     marginTop: 20, 
     fontSize: 20,
-    fontFamily:'Arial',
+    fontFamily:'Roboto',
     color:'#fff',
     letterSpacing:1.5
 
@@ -194,7 +256,7 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer:{
-    display: 'flex',
+    justifyContent:'center',
     alignItems : 'center',
     top:10
   },
@@ -223,9 +285,12 @@ const styles = StyleSheet.create({
     width: 200,
     height: 60,
     borderRadius: 35,
-    backgroundColor: '#fff', 
+    backgroundColor: '#fff',
+    
+
     justifyContent: 'center',
     alignItems: 'center',
+
     shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 5 },

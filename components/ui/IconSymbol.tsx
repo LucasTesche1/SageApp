@@ -20,7 +20,9 @@ const MAPPING = {
   'chevron.right': 'chevron-right',
   'person.fill': 'person',
   'cart.fill': 'shopping-cart',
-  'pills.fill': 'pills'
+  'pills.fill': 'pills',
+  'search':'seach'
+
 } as unknown as IconMapping;
 
 /**
