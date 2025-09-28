@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     flex:1,
     marginHorizontal:30,
     top:50,
-    backgroundColor:'#00CED1',
+    backgroundColor:'#00ced141',
     borderRadius:10,
 
     shadowColor: '#000',
@@ -238,8 +238,12 @@ const styles = StyleSheet.create({
     marginTop: 20, 
     fontSize: 20,
     fontFamily:'Roboto',
+    fontWeight:'500',
     color:'#fff',
-    letterSpacing:1.5
+    letterSpacing:1.3,
+
+    
+    
 
   },
 
