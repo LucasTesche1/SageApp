@@ -3,6 +3,8 @@
 O **SageApp** é um aplicativo completo para farmácias, oferecendo recursos modernos para gestão, compras de medicamentos e integração com IA.  
 Um dos principais diferenciais é o **chatbot inteligente integrado à API do Google Gemini**, capaz de responder dúvidas sobre fármacos, bulas, interações medicamentosas e orientações gerais de saúde (⚠️ sem substituir um profissional médico).
 
+Link do protótipo figma: https://www.figma.com/proto/y39M2tRf6QiHd0DnuiAON9/Sage-App?node-id=0-1&t=f8AfWEaSsB7VOQLL-1
+
 <div align=center>
 <img width="363" height="364" alt="Image" src="https://github.com/user-attachments/assets/84a1e1c6-61d4-4b15-98c4-2df8d7f6e1eb" />
 </div>
