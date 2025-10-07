@@ -24,6 +24,9 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="sageAi" options={{ headerShown: false }} />
         <Stack.Screen name="medicine" options={{ headerShown: false }} />
+        <Stack.Screen name="payment" options={{ headerShown: false }} />
+        <Stack.Screen name="confirmEnd" options={{ headerShown: false }} />
+        <Stack.Screen name="deliveryTracking" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

@@ -114,7 +114,6 @@ export default function HomeScreen() {
       </View>
       
 
-    {/*Area de continuar*/}
     </View>
         <View style={styles.buttonContainer}>
       <Text style={styles.total}>
@@ -128,7 +127,7 @@ export default function HomeScreen() {
           ]}
           
         >
-        <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight: 'bold' }}>Continuar</Text>
+        <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight: 'bold'}} onPress={() => router.push('/payment')}>Continuar</Text>
         </Pressable>
     </View>
     </ScrollView>
