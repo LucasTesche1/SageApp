@@ -8,7 +8,7 @@ export default function Payment() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.strip}>
         <Text style={styles.headerText}>Método de pagamento</Text>
       </View>
 
@@ -46,7 +46,7 @@ export default function Payment() {
             ]}
           />
           <Image
-            source={require("../assets/images/pix-logo.png")}
+            source={require("@/assets/images/pix-logo.png")}
             style={styles.pixLogo}
           />
           <Text style={styles.pixText}>PIX</Text>
@@ -75,20 +75,19 @@ export default function Payment() {
         </TouchableOpacity>
       ))}
 
-      <TouchableOpacity style={styles.continueButton}>
-        <Text style={styles.continueText} onPress={() => router.push('/confirmEnd')}>Continuar</Text>
+      <View style={{display:'flex', marginTop:212}}>
+      <TouchableOpacity
+        style={styles.continueButton}
+        onPress={() => router.push('/deliveryTracking')}
+      >
+        <Text style={styles.continueText} >Continuar</Text>
       </TouchableOpacity>
-
-      <View style={styles.bottomMenu}>
-        <TouchableOpacity>
-          <Ionicons name="home-outline" size={24} color="#00C2CB" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="person-outline" size={24} color="#00C2CB" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="cart-outline" size={24} color="#00C2CB" />
-        </TouchableOpacity>
+            <TouchableOpacity
+        style={styles.previousButton}
+        onPress={() => router.push('/confirmAddress')}
+      >
+        <Text style={styles.continueText}>Voltar</Text>
+      </TouchableOpacity>
       </View>
     </View>
   );
@@ -100,13 +99,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F5F5",
     alignItems: "center",
   },
-  header: {
+  strip: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#00C2CB",
     width: "100%",
     paddingVertical: 15,
-    alignItems: "center",
-    borderBottomWidth: 0.5,
-    borderColor: "#ddd",
+    paddingHorizontal: 15,
+    gap: 10,
+    top:10,
+    marginBottom:20
+
   },
   headerText: {
     color: "#fff",
@@ -173,6 +177,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 25,
     marginTop: 25,
+  },
+
+  previousButton:{
+    backgroundColor: "#c5c5c5ff",
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    borderRadius: 25,
+    marginTop: 25,
+    textAlign:'center',
+    justifyContent:"center",
+    alignItems:"center"
+  
   },
   continueText: {
     color: "#fff",

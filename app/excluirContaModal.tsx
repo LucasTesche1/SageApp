@@ -1,12 +1,13 @@
 import { FontAwesome5 } from "@expo/vector-icons";
+import { push } from "expo-router/build/global-state/routing";
 import React, { useState } from "react";
 import {
-    Modal,
-    Pressable,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 export default function ExcluirContaModal() {
@@ -16,6 +17,7 @@ export default function ExcluirContaModal() {
     // Aqui você pode chamar sua função para excluir a conta
     console.log("Conta excluída!");
     setVisible(false);
+    push('/welcome');
   };
 
   return (

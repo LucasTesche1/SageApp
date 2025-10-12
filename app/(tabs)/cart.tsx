@@ -125,9 +125,10 @@ export default function HomeScreen() {
             styles.buttonSend,
             pressed && { opacity: 0.6 }
           ]}
+          onPress={() => router.push('/confirmAddress')}
           
         >
-        <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight: 'bold'}} onPress={() => router.push('/payment')}>Continuar</Text>
+        <Text style={{ color:'#fff', fontFamily: 'Tahoma', fontWeight: 'bold'}}>Continuar</Text>
         </Pressable>
     </View>
     </ScrollView>
@@ -261,7 +262,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     alignItems : 'center',
     justifyContent:'space-around',
-    paddingTop:250,
+    paddingTop:180,
     
   },
 

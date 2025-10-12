@@ -54,6 +54,28 @@ export default function TabLayout() {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name='payment'
+        options={{
+          href:null, //
+        }}
+      />
+
+      <Tabs.Screen
+        name='deliveryTracking'
+        options={{
+          href:null, //
+        }}
+      />
+
+      <Tabs.Screen
+        name='confirmAddress'
+        options={{
+          href:null, //
+        }}
+      />         
+          
     </Tabs><FloatingButton /></>
   );
 }

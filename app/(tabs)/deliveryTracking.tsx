@@ -9,10 +9,7 @@ export default function DeliveryTrackingScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={22} color="#fff" />
-        </TouchableOpacity>
+      <View style={styles.strip}>
         <Text style={styles.headerText}>Entrega</Text>
       </View>
 
@@ -43,30 +40,30 @@ export default function DeliveryTrackingScreen() {
 
       <TouchableOpacity
         style={styles.confirmButton}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => router.push('/(tabs)/account')}
       >
-        <Text style={styles.confirmText} onPress={() => router.push('/(tabs)/account')}>Confirmar entrega</Text>
+        <Text style={styles.confirmText} >Confirmar entrega</Text>
       </TouchableOpacity>
 
-      <View style={styles.bottomMenu}>
-        <Ionicons name="home-outline" size={24} color="#00C2CB" />
-        <Ionicons name="person-outline" size={24} color="#00C2CB" />
-        <Ionicons name="cart-outline" size={24} color="#00C2CB" />
-      </View>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F5F5F5", alignItems: "center" },
-  header: {
+  strip: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#00C2CB",
     width: "100%",
     paddingVertical: 15,
     paddingHorizontal: 15,
     gap: 10,
+    top:10,
+    marginBottom:20
+
   },
   headerText: { color: "#fff", fontSize: 18, fontWeight: "600" },
   title: { fontSize: 22, marginTop: 30, fontWeight: "600", color: "#333" },

@@ -1,4 +1,3 @@
-import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -10,10 +9,7 @@ export default function ConfirmAddressScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={22} color="#fff" />
-        </TouchableOpacity>
+      <View style={styles.strip}>
         <Text style={styles.headerText}>Entrega</Text>
       </View>
 
@@ -35,40 +31,48 @@ export default function ConfirmAddressScreen() {
           <Text style={{ color: "#00C2CB", fontWeight: "bold" }}>+</Text>
         </Text>
       </TouchableOpacity>
-
+    
+      <View style={{display:'flex', marginTop:400}}>
       <TouchableOpacity
         style={styles.continueButton}
-        onPress={() => navigation.navigate("DeliveryTracking")}
+        onPress={() => router.push('/payment')}
       >
-        <Text style={styles.continueText} onPress={() => router.push('/deliveryTracking')}>Continuar</Text>
+        <Text style={styles.continueText} >Continuar</Text>
       </TouchableOpacity>
-
-      <View style={styles.bottomMenu}>
-        <Ionicons name="home-outline" size={24} color="#00C2CB" />
-        <Ionicons name="person-outline" size={24} color="#00C2CB" />
-        <Ionicons name="cart-outline" size={24} color="#00C2CB" />
+            <TouchableOpacity
+        style={styles.previousButton}
+        onPress={() => router.push("/cart")}
+      >
+        <Text style={styles.continueText}>Voltar</Text>
+      </TouchableOpacity>
       </View>
+
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F5F5F5", alignItems: "center" },
-  header: {
+  strip: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#00C2CB",
     width: "100%",
     paddingVertical: 15,
     paddingHorizontal: 15,
     gap: 10,
+    top:10,
+
   },
-  headerText: { color: "#fff", fontSize: 18, fontWeight: "600" },
+  headerText: { color: "#fff", fontSize: 18, fontWeight: "600", textAlign:'center' },
   title: {
     fontSize: 16,
-    marginTop: 20,
+    marginTop: 30,
+    marginBottom:10,
     color: "#333",
-    fontWeight: "500",
+    fontWeight: "600",
   },
   addressBox: {
     backgroundColor: "#fff",
@@ -94,10 +98,10 @@ const styles = StyleSheet.create({
   radioSelected: { backgroundColor: "#00C2CB", borderColor: "#00C2CB" },
   addressText: { color: "#333" },
   newAddress: {
-    backgroundColor: "#EDEDED",
+    backgroundColor: "#E5E5E5",
     borderRadius: 8,
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 90,
     marginTop: 10,
   },
   newAddressText: { color: "#444" },
@@ -108,7 +112,18 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginTop: 25,
   },
-  continueText: { color: "#fff", fontWeight: "600", fontSize: 16 },
+  previousButton:{
+    backgroundColor: "#c5c5c5ff",
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    borderRadius: 25,
+    marginTop: 25,
+    textAlign:'center',
+    justifyContent:"center",
+    alignItems:"center"
+  
+  },
+  continueText: { color: "#fff", fontWeight: "600", fontSize: 16, },
   bottomMenu: {
     flexDirection: "row",
     justifyContent: "space-around",
@@ -123,4 +138,5 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
   },
+
 });
