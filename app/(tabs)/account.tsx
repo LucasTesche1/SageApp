@@ -1,10 +1,9 @@
 import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import { router } from "expo-router";
+import { useState } from "react";
 import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from "react-native";
 
 export default function AccountScreen() {
-  const router = useRouter();
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -22,8 +21,13 @@ export default function AccountScreen() {
             style={styles.icon}
           />
           <View>
-            <Text style={styles.itemText}>Dados pessoais</Text>
+            <TouchableOpacity
+              onPress={() => {
+                router.push('/edit'); 
+              }}>
+              <Text style={styles.itemText}>Dados pessoais</Text>
             <Text style={styles.subText}>Informações pessoais</Text>
+            </TouchableOpacity>            
           </View>
         </TouchableOpacity>
       </View>
@@ -39,8 +43,13 @@ export default function AccountScreen() {
             style={styles.icon}
           />
           <View>
+            <TouchableOpacity
+              onPress={() => {
+                router.push('/addressEdit'); 
+              }}>
             <Text style={styles.itemText}>Endereços</Text>
             <Text style={styles.subText}>Lugares salvos</Text>
+            </TouchableOpacity>
           </View>
         </TouchableOpacity>
 
@@ -52,8 +61,13 @@ export default function AccountScreen() {
             style={styles.icon}
           />
           <View>
-            <Text style={styles.itemText}>Cartões</Text>
+            <TouchableOpacity
+              onPress={() => {
+                router.push('/cardEdit'); 
+              }}>
+            <Text style={styles.itemText}>Cartões</Text>            
             <Text style={styles.subText}>Dados seguros</Text>
+            </TouchableOpacity>
           </View>
         </TouchableOpacity>
 

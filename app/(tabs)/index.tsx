@@ -80,11 +80,16 @@ export default function HomeScreen() {
             onPress={() => router.push('/medicine')}
             
           >
+          <TouchableOpacity
+            style={styles.circle}   
+            onPress={() => router.push('/faq')}
+            
+          >
           <Image
             source={require('@/assets/images/home/icon-help.png')}
             style={styles.img}
           />  
-
+          </TouchableOpacity>            
           </TouchableOpacity>
           </View>
 

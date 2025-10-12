@@ -74,7 +74,35 @@ export default function TabLayout() {
         options={{
           href:null, //
         }}
-      />         
+      />
+
+      <Tabs.Screen
+        name='edit'
+        options={{
+          href:null, //
+        }}
+      />
+
+      <Tabs.Screen
+        name='addressEdit'
+        options={{
+          href:null, //
+        }}
+      />        
+
+      <Tabs.Screen
+        name='cardEdit'
+        options={{
+          href:null, //
+        }}
+      />
+
+      <Tabs.Screen
+        name='faq'
+        options={{
+          href:null, //
+        }}
+      />      
           
     </Tabs><FloatingButton /></>
   );
