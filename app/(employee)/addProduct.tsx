@@ -1,15 +1,29 @@
+import ItensForm from "@/components/ItensForm";
+import { addItem } from "@/services/Itens";
 import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import { router, Stack } from "expo-router";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Navigation() {
-
-  const [fontsLoaded] = useFonts({
+    const [fontsLoaded] = useFonts({
     Michroma: require("../../assets/fonts/Michroma-Regular.ttf"),
-  });
+    });
 
-return (
+    async function handleRegisterItem(name:string, quantity:string, dosage:string) {
+      try{
+        const response = await addItem({name, quantity, dosage});
+        console.log("Item criado: ", response);
+        router.push("/stock");
+      }catch(error){
+        console.error("Erro no registro: ",error);
+        Alert.alert("Erro", "Nome, Quantidade ou Dosagem inválidos");
+      }
+
+
+    };
+
+ return (
   
   <ScrollView contentContainerStyle={styles.containerAll}>
     <Stack.Screen options={{ headerShown: false }} />  
@@ -48,42 +62,17 @@ return (
     >
     <Text style={styles.circleText}>Conta</Text>
     </TouchableOpacity>
-
+        
     </View>
 
-    <View style={styles.cardContainer}>
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/stock')}>
-        <Image
-        source={require('@/assets/employeeIcons/Frame.png')}
-        style={styles.img}
-        />       
-        <Text style={styles.cardText}>ESTOQUE</Text>
-      </TouchableOpacity>
+    <ItensForm onSubmit={handleRegisterItem}/>
 
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/employeeIndex')}>            
-        <Image
-        source={require('@/assets/employeeIcons/User.png')}
-        style={styles.img}
-        />               
-        <Text style={styles.cardText}>FUNCIONÁRIOS</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/employeeIndex')}>            
-        <Image
-        source={require('@/assets/employeeIcons/Send.png')}
-        style={styles.img}
-        />       
-        <Text style={styles.cardText}>ENTREGAS</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/employeeIndex')}>            
-        <Image
-        source={require('@/assets/employeeIcons/Smile.png')}
-        style={styles.img}
-        />               
-        <Text style={styles.cardText}>FAQ</Text>
-      </TouchableOpacity>
-
+    <View style={styles.returnContainer}>
+      <TouchableOpacity
+      onPress={() => router.push('/stock')}
+      >
+      <Image
+      source={require("@/assets/images/return.png")}/></TouchableOpacity>
     </View>
 
   </ScrollView>
@@ -97,6 +86,38 @@ const styles = StyleSheet.create({
     flex: 1, 
     backgroundColor: "#fff"
   },  
+
+    formContainer: {
+    padding: 20,
+    gap: 15,
+    alignItems: 'center',
+    },
+
+
+    input: {
+      width: "80%",
+      borderWidth: 1,
+      borderColor: "#ccc",
+      padding: 12,
+      borderRadius: 10,
+    },
+
+
+    containerButtons: {
+      flexGrow: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#fff",
+      paddingVertical: 20,
+      gap: 15,
+    },
+
+    returnContainer:{  
+      width:'100%',
+      justifyContent:'center',
+      alignItems:'center',
+      top:300
+      },
 
   header:{
     display:'flex',
@@ -113,6 +134,7 @@ const styles = StyleSheet.create({
     
 
   },
+
   container: {
     flexGrow: 1,
     justifyContent: "center", 
@@ -120,37 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingVertical: 20,
   },
-  cardContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center", 
-    gap: 40,
-    top:70
-  },
-  card: {
-    width: 150,
-    height: 200,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "#d2d2d2",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
 
-  },
-
-  cardText: {
-    width:100,
-    textAlign:'center',
-    fontSize: 14,
-    color:'#000',
-    top:40,
-
-  },
-
-  buttonsContainer: {
-    padding: 10,
-  },
 
   textStyle: {
     textAlign: 'center',
@@ -218,4 +210,37 @@ const styles = StyleSheet.create({
     height :60,
     resizeMode : 'contain',
   },
+
+  containerTable:{
+    top:40,
+    padding:30,
+  },
+  table: {
+    borderColor:'#847e7e77',
+    borderWidth:0.5,
+    display:'flex',
+    flexDirection:'column'
+  },
+
+  row: {
+    flexDirection: "row",
+  },
+
+    cellId: {
+        flex: 0.3,
+        padding: 12,
+        borderWidth: 1,
+        borderColor: "#f1f1f1",
+        textAlign: "center",
+    
+    },
+
+    cellProduct: {
+        flex: 1, 
+        padding: 12,
+        borderWidth: 1,
+        borderColor: "#f1f1f1",
+    },
+
+
 });
