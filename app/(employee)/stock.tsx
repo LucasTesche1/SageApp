@@ -1,4 +1,4 @@
-import { getAllItems, Item } from "@/services/Itens";
+import { deleteItem, getAllItems, Item } from "@/services/Itens";
 import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import { router, Stack } from "expo-router";
@@ -14,6 +14,7 @@ export default function Navigation() {
 
     const [itens,setItens] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
+    const [deleteMode, setDeleteMode] = useState(false);
 
     const fetchItems = async () => {
       try{
@@ -30,9 +31,20 @@ export default function Navigation() {
       fetchItems();
     }, []);
 
+
+    const handleDeleteItem = async (id:number)  => {
+      try{
+        await deleteItem(id);
+        setItens(prev => prev.filter(item => item.id !== id));
+      } catch (err){
+        console.error("Erro ao deletar item:", err);
+      }
+    };
+    
     if(!fontsLoaded) {
       return <Text>Carregando fontes...</Text>;
-    }
+    };
+
 
  return (
     <ScrollView contentContainerStyle={styles.containerAll}>
@@ -77,7 +89,9 @@ export default function Navigation() {
             <Text style={[styles.cellProduct, styles.cellHeader]}>Nome</Text>
             <Text style={[styles.cellProduct, styles.cellHeader]}>Qnt</Text>
             <Text style={[styles.cellProduct, styles.cellHeader]}>Dosagem</Text>
-          </View>          
+            {deleteMode}
+          </View>
+
           {loading ? (
             <Text>Carregando itens...</Text>
           ) : itens.length === 0 ? (
@@ -88,6 +102,14 @@ export default function Navigation() {
                 <Text style={styles.cellProduct}>{item.name}</Text>
                 <Text style={styles.cellProduct}>{item.quantity}</Text>
                 <Text style={styles.cellProduct}>{item.dosage}</Text>
+                {deleteMode && (
+                  <TouchableOpacity 
+                    style={styles.deleteX} 
+                    onPress={() => handleDeleteItem(item.id)}
+                  >
+                    <Text style={{color:'red', fontWeight:'bold', fontSize:25}}>X</Text>
+                  </TouchableOpacity>
+                )}
               </View>
             ))
           )}
@@ -103,7 +125,10 @@ export default function Navigation() {
           <Text style={{color:'#fff', fontSize:18}}>Adicionar +</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonDel}>
+        <TouchableOpacity 
+          style={styles.buttonDel}
+          onPress={() => setDeleteMode(prev => !prev)} 
+        >
           <Text style={{color:'#fff', fontSize:18}}>Excluir -</Text>
         </TouchableOpacity>
 
@@ -284,6 +309,11 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       borderBottomWidth: 0.2,
       borderBottomColor: '#f1f1f1',
-    }    
+    },    
 
+  deleteX:{
+    padding:10,
+    justifyContent:'center',
+    alignItems:'center',
+  }
 });
