@@ -1,9 +1,9 @@
-import { deleteItem, getAllItems, Item } from "@/services/Itens";
+import { deleteItem, getAllItems, Item, updateItem } from "@/services/Itens";
 import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import { router, Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function Navigation() {
     
@@ -15,6 +15,13 @@ export default function Navigation() {
     const [itens,setItens] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
     const [deleteMode, setDeleteMode] = useState(false);
+    const [editMode, setEditMode] = useState(false);
+    const [editingItemId, setEditingItemId] = useState<number | null>(null);
+    const [editValues, setEditValues] = useState<{ name: string; quantity: string; dosage: string }>({
+      name: '',
+      quantity: '',
+      dosage: '',
+    });
 
     const fetchItems = async () => {
       try{
@@ -45,6 +52,15 @@ export default function Navigation() {
       return <Text>Carregando fontes...</Text>;
     };
 
+    const handleSave = async (id: number) => {
+      try {
+        await updateItem(id, editValues); // sua função da API
+        setItens(prev => prev.map(item => item.id === id ? { ...item, ...editValues } : item));
+        setEditingItemId(null);
+      } catch(err) {
+        console.error("Erro ao atualizar item:", err);
+      }
+    };
 
  return (
     <ScrollView contentContainerStyle={styles.containerAll}>
@@ -82,39 +98,81 @@ export default function Navigation() {
         </TouchableOpacity>
       </View>
 
-      {/* TABELA */}
-      <View style={styles.containerTable}>
-        <View style={styles.table}>
-          <View style={[styles.row, styles.rowHeader]}>
-            <Text style={[styles.cellProduct, styles.cellHeader]}>Nome</Text>
-            <Text style={[styles.cellProduct, styles.cellHeader]}>Qnt</Text>
-            <Text style={[styles.cellProduct, styles.cellHeader]}>Dosagem</Text>
-            {deleteMode}
-          </View>
-
-          {loading ? (
-            <Text>Carregando itens...</Text>
-          ) : itens.length === 0 ? (
-            <Text>Nenhum item cadastrado</Text>
-          ) : (
-            itens.map((item, idx) => (
-              <View key={idx} style={styles.row}>
-                <Text style={styles.cellProduct}>{item.name}</Text>
-                <Text style={styles.cellProduct}>{item.quantity}</Text>
-                <Text style={styles.cellProduct}>{item.dosage}</Text>
-                {deleteMode && (
-                  <TouchableOpacity 
-                    style={styles.deleteX} 
-                    onPress={() => handleDeleteItem(item.id)}
-                  >
-                    <Text style={{color:'red', fontWeight:'bold', fontSize:25}}>X</Text>
-                  </TouchableOpacity>
-                )}
-              </View>
-            ))
-          )}
+    {/* TABELA */}
+    <View style={styles.containerTable}>
+      <View style={styles.table}>
+        <View style={[styles.row, styles.rowHeader]}>
+          <Text style={[styles.cellProduct, styles.cellHeader]}>Nome</Text>
+          <Text style={[styles.cellProduct, styles.cellHeader]}>Qnt</Text>
+          <Text style={[styles.cellProduct, styles.cellHeader]}>Dosagem</Text>
+          {deleteMode && <Text style={[styles.cellProduct, styles.cellHeader]}>X</Text>}
+          {editMode && <Text style={[styles.cellProduct, styles.cellHeader]}>✎</Text>}
         </View>
+
+        {loading ? (
+          <Text>Carregando itens...</Text>
+        ) : itens.length === 0 ? (
+          <Text>Nenhum item cadastrado</Text>
+        ) : (
+          itens.map((item, idx) => (
+            <View key={idx} style={styles.row}>
+              {editingItemId === item.id ? (
+                <>
+                  <TextInput
+                    style={styles.cellProduct}
+                    value={editValues.name}
+                    onChangeText={(text) => setEditValues(prev => ({ ...prev, name: text }))}
+                  />
+                  <TextInput
+                    style={styles.cellProduct}
+                    value={editValues.quantity}
+                    onChangeText={(text) => setEditValues(prev => ({ ...prev, quantity: text }))}
+                  />
+                  <TextInput
+                    style={styles.cellProduct}
+                    value={editValues.dosage}
+                    onChangeText={(text) => setEditValues(prev => ({ ...prev, dosage: text }))}
+                  />
+                  <TouchableOpacity
+                    style={styles.saveButton}
+                    onPress={() => handleSave(item.id)}
+                  >
+                    <Text style={{color:'#fff', fontWeight:'bold'}}>💾</Text>
+                  </TouchableOpacity>
+                </>
+              ) : (
+                <>
+                  <Text style={styles.cellProduct}>{item.name}</Text>
+                  <Text style={styles.cellProduct}>{item.quantity}</Text>
+                  <Text style={styles.cellProduct}>{item.dosage}</Text>
+
+                  {deleteMode && (
+                    <TouchableOpacity
+                      style={styles.deleteX}
+                      onPress={() => handleDeleteItem(item.id)}
+                    >
+                      <Text style={{color:'red', fontWeight:'bold', fontSize:25}}>X</Text>
+                    </TouchableOpacity>
+                  )}
+
+                  {editMode && (
+                    <TouchableOpacity
+                      style={styles.editX}
+                      onPress={() => {
+                        setEditingItemId(item.id);
+                        setEditValues({ name: item.name, quantity: item.quantity, dosage: item.dosage });
+                      }}
+                    >
+                      <Text style={{fontWeight:'bold', fontSize:18}}>✎</Text>
+                    </TouchableOpacity>
+                  )}
+                </>
+              )}
+            </View>
+          ))
+        )}
       </View>
+    </View>
 
       {/* BOTOES */}
       <View style={styles.containerButtons}>
@@ -132,7 +190,7 @@ export default function Navigation() {
           <Text style={{color:'#fff', fontSize:18}}>Excluir -</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonEdit}>
+        <TouchableOpacity style={styles.buttonEdit} onPress={()=>setEditMode(prev => !prev)}>
           <Text style={{fontSize:18}}>Editar</Text>
         </TouchableOpacity>    
       </View>
@@ -315,5 +373,31 @@ const styles = StyleSheet.create({
     padding:10,
     justifyContent:'center',
     alignItems:'center',
-  }
+  },
+
+  editBtn: {
+  backgroundColor:'#098902',
+  paddingHorizontal:10,
+  paddingVertical:5,
+  borderRadius:5,
+  justifyContent:'center',
+  alignItems:'center',
+  marginLeft:5,
+},
+
+saveButton:{
+  padding:5,
+  backgroundColor:'#098902',
+  borderRadius:5,
+  justifyContent:'center',
+  alignItems:'center'
+},
+
+editX:{
+  padding:5,
+  backgroundColor:'#FFD700',
+  borderRadius:5,
+  justifyContent:'center',
+  alignItems:'center'
+}
 });
