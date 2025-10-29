@@ -13,7 +13,7 @@ export default function WelcomeScreen() {
     try{
       const response = await login({email, password});
       console.log("Usuário logado: ", response);
-      router.push("/");
+      router.push("/welcomeEmployee");
     }catch(error){
       console.error("Erro no login: ",error);
       Alert.alert("Erro", "Email ou senha inválidos");
