@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 interface LoginFromProps {
   onSubmit:(email: string, password: string) => void;
@@ -36,7 +36,7 @@ export default function LoginFormEmployee({onSubmit}: LoginFromProps){
                 <TouchableOpacity
                 style={styles.btnLogin}
                 onPress={() => onSubmit(email, password)}
-                >Entrar</TouchableOpacity>
+                ><Text>Entrar</Text></TouchableOpacity>
             </View> 
       </View>
 

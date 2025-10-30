@@ -18,7 +18,7 @@ export default function WelcomeScreen() {
         <View style={styles.logoImg}>
           <Image source={require("@/assets/images/sage-logo-green.png")}/>
           <Text style={styles.logoText}>SAGE</Text>
-          <Text style={styles.logoText}>FUNCIONÁRIO</Text>
+          <Text style={styles.logoSubText}>FUNCIONÁRIO</Text>
                       
         </View>
         <View style={styles.containerButtons}>
@@ -83,6 +83,15 @@ const styles = StyleSheet.create({
     textAlign:'center',
     fontWeight:'bold'
   },
+  logoSubText:{
+    top:5,
+    fontSize: 30,
+    color: "#00D138",
+    fontFamily: "Michroma",
+    textAlign:'center',
+    fontWeight:'bold'    
+  },
+
 
   defaultText:{
     fontSize: 20,

@@ -25,19 +25,19 @@ export default function WelcomeScreen() {
           <TouchableOpacity 
           style={styles.btnLogin}
           onPress={() => router.push('/login')}
-          >Login</TouchableOpacity>
+          ><Text>Login</Text></TouchableOpacity>
           
           <TouchableOpacity 
           style={styles.btnRegister}
           onPress={() => router.push('/register')}
-          >Cadastro</TouchableOpacity>
+          ><Text>Cadastro</Text></TouchableOpacity>
         </View>
 
 
           <TouchableOpacity 
           style={styles.defaultText}
           onPress={() => router.push('/login-employee')}          
-          >Login Funcionário</TouchableOpacity>
+          ><Text>Login Funcionário</Text></TouchableOpacity>
       </View>
     
     

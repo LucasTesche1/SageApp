@@ -1,10 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
+import { LinearGradient } from "expo-linear-gradient";
+import { router, Stack } from "expo-router";
 import React, { useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function FaqScreen() {
   const [expanded, setExpanded] = useState<number | null>(null);
-
+  const [fontsLoaded] = useFonts({
+    Michroma: require("../../assets/fonts/Michroma-Regular.ttf"),
+  });
   const faqs = [
     { id: 1, question: "Lorem IpsonLorem Ipson?", answer: "Resposta detalhada da primeira FAQ. lorem Ipson lorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipsonlorem Ipson" },
     { id: 2, question: "Lorem Ipson", answer: "Resposta detalhada da segunda FAQ." },
@@ -17,18 +22,45 @@ export default function FaqScreen() {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
-
+        <Stack.Screen options={{ headerShown: false }} />  
         {/* HEADER */}
         <View style={styles.header}>
-          <Text style={styles.logo}>SAGE</Text>
-          <Image source={require("@/assets/images/image.png")} style={styles.logoImg} />
+          <Text style={styles.logo}>FAQ</Text>
         </View>
 
-        {/* TÍTULO */}
-        <View style={styles.titleBox}>
-          <Text style={styles.title}>Tire suas dúvidas</Text>
-        </View>
+      <View style={styles.circleRow}>
+      <LinearGradient
+      colors={['rgba(255, 255, 255, 0.7)', 'transparent']} 
+      style={styles.vignette}
+      />
 
+      <TouchableOpacity
+          style={styles.circleAlt}   
+          onPress={() => router.push('/employeeIndex')}
+      
+      >
+      <Text style={styles.circleText}>Início</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+          style={styles.circle}   
+      >
+      <Image
+          source={require('@/assets/images/bubble.png')}
+          style={styles.img}
+          /> 
+      </TouchableOpacity>
+
+      <TouchableOpacity
+          style={styles.circleAlt}   
+          onPress={() => router.push('/employeeIndex')}
+      
+      >
+    <Text style={styles.circleText}>Conta</Text>
+    </TouchableOpacity>
+    </View>
+
+    
         {/* LISTA DE FAQ */}
         {faqs.map((item) => (
           <View key={item.id} style={styles.faqItem}>
@@ -76,16 +108,14 @@ const styles = StyleSheet.create({
   /** HEADER **/
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 5,
     paddingVertical: 5,
-    marginTop: 5,
   },
 
   logo: {
     fontSize: 40,
-    color: "#00CED1",
+    color: "#00D138",
     fontFamily: "Michroma",
     paddingLeft: 20,
   },
@@ -100,7 +130,7 @@ const styles = StyleSheet.create({
 
 
   titleBox: {
-    backgroundColor: "#00CED1",
+    backgroundColor: "#00D138",
     paddingVertical: 10,
   },
   title: {
@@ -135,5 +165,66 @@ const styles = StyleSheet.create({
     marginTop: 8,
     color: "#555",
     lineHeight: 20,
+  },
+
+    circleRow:{
+    flexDirection: "row",
+    justifyContent: "center",
+    gap:20,
+    marginVertical: 5,
+    backgroundColor: "#00D138",
+    padding: 10,
+  },
+
+  vignette: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+
+  circle: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: "#f1f1f1",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 6,
+    alignItems : 'center'
+  },
+
+  circleAlt:{
+    width: 120,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: "#f1f1f1",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 6,
+    alignItems : 'center',
+    justifyContent : 'center',
+
+  },
+
+  circleText:{
+    marginTop:-4,
+    fontSize:16,
+    fontFamily:'Michroma',
+    fontWeight:'500',
+    letterSpacing:0.5
+
+
+  },
+
+  img:{        
+    width : 60,
+    height :60,
+    resizeMode : 'contain',
   },
 });

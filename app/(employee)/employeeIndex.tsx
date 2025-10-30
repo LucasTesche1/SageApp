@@ -60,7 +60,7 @@ return (
         <Text style={styles.cardText}>ESTOQUE</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/employeeIndex')}>            
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/userManagement')}>            
         <Image
         source={require('@/assets/employeeIcons/User.png')}
         style={styles.img}
@@ -76,7 +76,7 @@ return (
         <Text style={styles.cardText}>ENTREGAS</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.card} onPress={() => router.push('/employeeIndex')}>            
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/faqEmployee')}>            
         <Image
         source={require('@/assets/employeeIcons/Smile.png')}
         style={styles.img}

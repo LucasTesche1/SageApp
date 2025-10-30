@@ -1,6 +1,5 @@
-import { router } from "expo-router";
-import React, {useState} from "react";
-import { StyleSheet, TextInput, View, Button, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 interface LoginFromProps {
   onSubmit:(email: string, password: string) => void;
@@ -37,7 +36,7 @@ export default function LoginForm({onSubmit}: LoginFromProps){
                 <TouchableOpacity
                 style={styles.btnLogin}
                 onPress={() => onSubmit(email, password)}
-                >Entrar</TouchableOpacity>
+                ><Text>Entrar</Text></TouchableOpacity>
             </View> 
       </View>
 

@@ -67,7 +67,7 @@ export default function Navigation() {
       <Stack.Screen options={{ headerShown: false }} />  
 
       <View style={styles.header}>
-        <Text style={styles.header}>ESTOQUE</Text>
+        <Text style={styles.header}>FUNCIONÁRIOS</Text>
       </View>
 
       <View style={styles.circleRow}>
@@ -155,17 +155,6 @@ export default function Navigation() {
                     </TouchableOpacity>
                   )}
 
-                  {editMode && (
-                    <TouchableOpacity
-                      style={styles.editX}
-                      onPress={() => {
-                        setEditingItemId(item.id);
-                        setEditValues({ name: item.name, quantity: item.quantity, dosage: item.dosage });
-                      }}
-                    >
-                      <Text style={{fontWeight:'bold', fontSize:18}}>✎</Text>
-                    </TouchableOpacity>
-                  )}
                 </>
               )}
             </View>
@@ -178,7 +167,7 @@ export default function Navigation() {
       <View style={styles.containerButtons}>
         <TouchableOpacity
           style={styles.buttonAdd}
-          onPress={() => router.push('/addProduct')}
+          onPress={() => router.push('/addUser')}
         >
           <Text style={{color:'#fff', fontSize:18}}>Adicionar +</Text>
         </TouchableOpacity>
@@ -190,9 +179,6 @@ export default function Navigation() {
           <Text style={{color:'#fff', fontSize:18}}>Excluir -</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonEdit} onPress={()=>setEditMode(prev => !prev)}>
-          <Text style={{fontSize:18}}>Editar</Text>
-        </TouchableOpacity>    
       </View>
     </ScrollView>
   );
@@ -212,7 +198,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 5,
     paddingVertical: 7,
-    fontSize:40,
+    fontSize:30,
 
     color: "#00D138",
     fontFamily: "Michroma",
@@ -375,15 +361,6 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
 
-  editBtn: {
-  backgroundColor:'#098902',
-  paddingHorizontal:10,
-  paddingVertical:5,
-  borderRadius:5,
-  justifyContent:'center',
-  alignItems:'center',
-  marginLeft:5,
-},
 
 saveButton:{
   padding:5,
@@ -393,10 +370,5 @@ saveButton:{
   alignItems:'center'
 },
 
-editX:{
-  padding:5,
-  borderRadius:5,
-  justifyContent:'center',
-  alignItems:'center'
-}
+
 });

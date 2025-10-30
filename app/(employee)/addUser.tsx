@@ -1,38 +1,45 @@
+import RegisterForm from '@/components/RegisterForm';
+import { register } from '@/services/Authentication';
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import { useState } from 'react';
+import { useFonts } from 'expo-font';
+import { router, Stack } from 'expo-router';
 import {
   Alert,
   Image,
-  ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
 
-export default function ProfileEdit({ navigation }: { navigation?: any }) {
-  const [name, setName] = useState('Keven Peter');
-  const [email, setEmail] = useState('Kevenpeters@gmail.com');
-  const [password, setPassword] = useState('');
-  const [dob, setDob] = useState('23/05/1995');
-  const [phone, setPhone] = useState('(61) 90000-0000');
+export default function ProfileEdit() {
 
-  function handleSave() {
-    Alert.alert('Salvo', 'Dados salvos localmente (substitua por chamada API).');
-    router.push('/account');
-    console.log({ name, email, password, dob, phone });
-  }
+    async function handleRegister(name:string, email:string, password:string) {
+      try{
+        const response = await register({name, email, password});
+        console.log("Usuário inserido: ", response);
+        router.push("/userManagement");
+      }catch(error){
+        console.error("Erro no registro: ",error);
+        Alert.alert("Erro", "Nome, email ou senha inválidos");
+      }
+      
+    }
+    const [fontsLoaded] = useFonts({
+        Michroma: require("../../assets/fonts/Michroma-Regular.ttf"),
+        
+    });
+
+
 
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
- 
+     <Stack.Screen options={{ headerShown: false }} />  
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Edite seu perfil</Text>
+        <Text style={styles.headerTitle}>Adicione um perfil</Text>
       </View>
 
-      <ScrollView contentContainerStyle={styles.container}>
+
 
         <View style={styles.avatarWrap}>
           <View style={styles.avatarBorder}>
@@ -47,32 +54,19 @@ export default function ProfileEdit({ navigation }: { navigation?: any }) {
           </View>
         </View>
 
+        <RegisterForm onSubmit={handleRegister}/>
 
-        <View style={styles.form}>
-          <Text style={styles.label}>Nome</Text>
-          <TextInput style={styles.input} value={name} onChangeText={setName} />
-
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            keyboardType="email-address"
-            style={styles.input}
-            value={email}
-            onChangeText={setEmail}
-          />
-
-          <Text style={styles.label}>Senha</Text>
-          <TextInput
-            secureTextEntry
-            style={styles.input}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <TouchableOpacity style={styles.saveBtn} onPress={handleSave}>
-            <Text style={styles.saveBtnText}>Salvar Alterações</Text>
-          </TouchableOpacity>
+        <View style={styles.returnContainer}>
+            <TouchableOpacity
+              onPress={() => router.push('/userManagement')}
+            >
+            <Image
+            source={require("@/assets/images/return.png")}/>
+            </TouchableOpacity>
         </View>
-      </ScrollView>
     </View>
+
+
   );
 }
 
@@ -80,7 +74,7 @@ const styles = StyleSheet.create({
   header: {
     top:10,
     height: 72,
-    backgroundColor: '#15d9d2',
+    backgroundColor: '#00D138',
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 6,
@@ -95,7 +89,7 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 60,
     borderWidth: 3,
-    borderColor: '#15d9d2',
+    borderColor: '#00D138',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
@@ -111,7 +105,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 6,
     right: 6,
-    backgroundColor: '#15d9d2',
+    backgroundColor: '#00D138',
     borderRadius: 16,
     padding: 6,
   },
@@ -129,14 +123,24 @@ const styles = StyleSheet.create({
   },
 
   saveBtn: {
-    marginTop: 18,
-    alignSelf: 'center',
-    backgroundColor: '#2fe3dd',
-    paddingVertical: 12,
-    paddingHorizontal: 26,
-    borderRadius: 8,
+    marginTop: 50,
+    alignSelf: 'center',    
     minWidth: 200,
-    alignItems: 'center',
+    backgroundColor:'#098902',
+    paddingHorizontal:30,
+    paddingVertical:12,
+    borderRadius:20,
+    width:180,
+    justifyContent:'center',
+    alignItems:'center',
   },
   saveBtnText: { color: '#fff', fontWeight: '600' },
+
+    returnContainer:{  
+    width:'100%',
+    justifyContent:'center',
+    alignItems:'center',
+    top:200
+    },
+
 });
