@@ -102,7 +102,14 @@ export default function TabLayout() {
         options={{
           href:null, //
         }}
-      />      
+      />
+
+      <Tabs.Screen
+        name='remedioPage'
+        options={{
+          href:null, //
+        }}
+      />          
           
     </Tabs><FloatingButton /></>
   );

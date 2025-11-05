@@ -95,7 +95,10 @@ export default function HomeScreen() {
 
           {/* PRODUTOS */}
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.productRow}>
-            <Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/>
+            <TouchableOpacity
+            onPress={() => router.push('/remedioPage')}
+            ><Image source={require("@/assets/images/remedios/1.png")} style={styles.productImg}/></TouchableOpacity>
+            
             <Image source={require("@/assets/images/remedios/2.jpg")} style={styles.productImg}/>
             <Image source={require("@/assets/images/remedios/3.jpg")} style={styles.productImg}/>
             <Image source={require("@/assets/images/remedios/4.jpg")} style={styles.productImg}/>

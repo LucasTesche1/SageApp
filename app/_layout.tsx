@@ -20,7 +20,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'light' ? DefaultTheme : DefaultTheme}>
-      <Stack>
+      <Stack initialRouteName='(auth)/welcome'>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="sageAi" options={{ headerShown: false }} />
         <Stack.Screen name="medicine" options={{ headerShown: false }} />
