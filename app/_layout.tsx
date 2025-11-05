@@ -31,6 +31,7 @@ export default function RootLayout() {
         <Stack.Screen name="cardEdit" options={{ headerShown: false }} />
         <Stack.Screen name="faq" options={{ headerShown: false }} />
         <Stack.Screen name="deliveryTracking" options={{ headerShown: false }} />
+        <Stack.Screen name="remedioPage" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
