@@ -109,7 +109,14 @@ export default function TabLayout() {
         options={{
           href:null, //
         }}
-      />          
+      />
+
+      <Tabs.Screen
+        name='fav'
+        options={{
+          href:null, //
+        }}
+      />                
           
     </Tabs><FloatingButton /></>
   );

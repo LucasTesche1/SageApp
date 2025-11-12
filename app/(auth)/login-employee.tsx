@@ -43,7 +43,7 @@ export default function WelcomeScreen() {
                     </View>
 
                     <View style={styles.textContainer}>
-                        <Text style={styles.logoText}>LOGIN FUNCIONÁRIO</Text>            
+                        <Text style={styles.logoText}><View>LOGIN FUNCIONÁRIO</View></Text>            
                     </View>
 
                     <LoginFormEmployee onSubmit={handleLoginEmployee}/>

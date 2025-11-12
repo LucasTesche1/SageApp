@@ -1,12 +1,34 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { getAllItems, Item } from "../services/Itens"; // importa seu service
+import { getAllItems, Item } from "../services/Itens"; 
 
 export default function HomeScreen() {
   const [itens, setItens] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const toggleFavorite = async (item: Item) => {
+    try {
+      const storedFavorites = await AsyncStorage.getItem("favorites");
+      const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+
+      const exists = favorites.some((fav: Item) => fav.id === item.id);
+      let newFavorites;
+
+      if (exists) {
+        newFavorites = favorites.filter((fav: Item) => fav.id !== item.id);
+      } else {
+        newFavorites = [...favorites, item];
+      }
+
+      await AsyncStorage.setItem("favorites", JSON.stringify(newFavorites));
+      alert(exists ? "Removido dos favoritos!" : "Adicionado aos favoritos!");
+    } catch (error) {
+      console.log(error);
+    }
+  };  
 
   useEffect(() => {
     async function carregarItens() {
@@ -63,6 +85,15 @@ export default function HomeScreen() {
         ) : (
           itens.map((item, index) => (
             <View key={item.id} style={styles.card}>
+
+              {/* FAVORITO */}
+              <TouchableOpacity
+                style={{ position: "absolute", top: 8, right: 8 }}
+                onPress={() => toggleFavorite(item)}
+              >
+                <Ionicons name="heart-outline" size={22} color="#C80000" />
+              </TouchableOpacity>
+
               <Image
                 source={imagens[index % imagens.length]} // alterna as imagens
                 style={styles.logoImgRemedio}

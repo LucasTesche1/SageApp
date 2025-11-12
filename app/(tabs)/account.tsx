@@ -71,6 +71,17 @@ export default function AccountScreen() {
           </View>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.item} onPress={() => router.push('/fav')}>
+          <FontAwesome5
+            name="star"
+            size={22}
+            color="gold"
+            style={styles.icon}
+          />
+          <Text style={[styles.itemText]}>Favoritos</Text>
+          
+        </TouchableOpacity>        
+
         <TouchableOpacity style={styles.item} onPress={() => setModalVisible(true)}>
           <FontAwesome5
             name="trash"
@@ -79,7 +90,10 @@ export default function AccountScreen() {
             style={styles.icon}
           />
           <Text style={[styles.itemText, { color: "red" }]}>Excluir conta</Text>
+          
         </TouchableOpacity>
+
+
       </View>
 
       <Modal
