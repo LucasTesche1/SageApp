@@ -45,7 +45,7 @@ Link do protótipo figma: https://www.figma.com/proto/y39M2tRf6QiHd0DnuiAON9/Sag
 ## 🤖 Integração com Google Gemini
 
 O chatbot é integrado via API que consome os serviços do **Google Gemini**, possibilitando interações contextuais com os usuários.
-
+Repositório do Backend: https://github.com/LucasTesche1/API_SageApp_Services
 
 ---
 
