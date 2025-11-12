@@ -37,7 +37,7 @@ export default function RemedioPage() {
       </View>
 
       {/* Título */}
-      <Text style={styles.titulo}>Ibuprofeno 50mg</Text>
+      <Text style={styles.titulo}>Clonazepam 20mg</Text>
 
       {/* Imagem */}
       <View style={styles.imageContainer}>

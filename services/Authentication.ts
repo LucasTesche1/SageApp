@@ -44,6 +44,15 @@ export async function login(data: LoginRequest): Promise<APIResponse> {
     
 }
 
+export async function getAllUsers(): Promise<APIResponse[]> {
+  try {
+    const resp = await api.get<APIResponse[]>("/auth/");
+    return resp.data;
+  } catch (err: any) {
+    throw new Error(err.response?.data?.error || "Erro ao buscar itens (API)");
+  }
+}
+
 export async function register(data: RegisterRequest): Promise<APIResponse> {
     const resp = await api.post<APIResponse>("/auth/register", data);
     return resp.data;
