@@ -53,10 +53,10 @@ export default function FaqScreen() {
 
       <TouchableOpacity
           style={styles.circleAlt}   
-          onPress={() => router.push('/employeeIndex')}
+          onPress={() => router.push('/welcome')}
       
       >
-    <Text style={styles.circleText}>Conta</Text>
+    <Text style={styles.circleText}>Login</Text>
     </TouchableOpacity>
     </View>
 

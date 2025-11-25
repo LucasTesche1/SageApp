@@ -17,7 +17,7 @@ import {
 const App = () => {
   useFocusEffect(
   React.useCallback(() => {
-      Alert.alert("Aviso", "O SageAI ainda está em desinvolvimento, procure sempre ser objetivo na pergunta, por exemplo: 'Estou com dor nos olhos'.");
+      Alert.alert("Aviso", "O SageAI ainda está em desenvolvimento, procure sempre ser objetivo na pergunta, por exemplo: 'Estou com dor nos olhos'. Lembre-se, essa IA não substitui o diagnóstico médico ou as orientações de um profissional! Apenas trás dados baseados em médias e resumos públicos.");
     }, [])
   );
 
