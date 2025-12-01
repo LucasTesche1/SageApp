@@ -49,6 +49,12 @@ Repositório do Backend: https://github.com/LucasTesche1/API_SageApp_Services
 
 ---
 
+### Criadores
+
+Lucas Tesche
+João Victor de Jesus Alves
+Matheus Dias Coelho
+
 🚀 Como Executar o Projeto
 
 # Pré-requisitos:
